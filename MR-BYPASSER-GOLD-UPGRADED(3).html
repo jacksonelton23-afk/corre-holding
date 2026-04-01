@@ -1,0 +1,2776 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MR-BYPASSER CORP · Financial Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:       #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-dim:   #8B6E2A;
+  --gold-glow:  rgba(201,168,76,0.12);
+  --dark:       #0D0D0D;
+  --dark2:      #141414;
+  --dark3:      #1C1C1C;
+  --dark4:      #242424;
+  --dark5:      #2C2C2C;
+  --border:     #2A2A2A;
+  --border2:    #333;
+  --text:       #E8E4DC;
+  --text-dim:   #8A8070;
+  --text-faint: #4A4438;
+  --green:      #4CAF74;
+  --green-dim:  rgba(76,175,116,0.12);
+  --red:        #E05555;
+  --red-dim:    rgba(224,85,85,0.1);
+  --blue:       #5588E0;
+  --blue-dim:   rgba(85,136,224,0.1);
+  --purple:     #9B5DE5;
+  --amber:      #F0A030;
+  --teal:       #3BBFA3;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size: 13px; }
+
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width:5px; height:5px; }
+::-webkit-scrollbar-track { background:var(--dark2); }
+::-webkit-scrollbar-thumb { background:var(--border2); border-radius:3px; }
+::-webkit-scrollbar-thumb:hover { background:var(--gold-dim); }
+
+/* ══════════════════════════════════
+   HEADER
+══════════════════════════════════ */
+.header {
+  background: linear-gradient(135deg, var(--dark2) 0%, #1A1508 100%);
+  border-bottom: 1px solid var(--gold-dim);
+  padding: 0 28px;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top:0; z-index:500;
+  box-shadow: 0 4px 40px rgba(201,168,76,0.07);
+}
+.logo-area { display:flex; align-items:center; gap:14px; }
+.logo-icon {
+  width:44px; height:44px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+  border-radius: 12px;
+  display:flex; align-items:center; justify-content:center;
+  font-family: 'Playfair Display', serif;
+  font-size:16px; font-weight:900; color:var(--dark);
+  letter-spacing:-1px;
+  box-shadow: 0 0 24px rgba(201,168,76,0.35);
+  flex-shrink:0;
+}
+.logo-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size:17px; font-weight:700; color:var(--gold-light);
+  letter-spacing:0.3px; line-height:1.1;
+}
+.logo-text span {
+  font-size:10px; color:var(--text-dim);
+  letter-spacing:1.5px; text-transform:uppercase;
+}
+.header-right { display:flex; align-items:center; gap:10px; }
+.hdr-badge {
+  padding:5px 14px; border:1px solid var(--gold-dim); border-radius:20px;
+  font-size:12px; color:var(--gold); letter-spacing:0.3px;
+}
+.hdr-clock {
+  font-family:'DM Mono', monospace; font-size:12px; color:var(--text-dim);
+  background:var(--dark3); border:1px solid var(--border);
+  padding:5px 12px; border-radius:7px; letter-spacing:1px;
+}
+.live-dot {
+  display:flex; align-items:center; gap:6px;
+  font-family:'DM Mono', monospace; font-size:10px; color:var(--green);
+  letter-spacing:1px;
+}
+.lpulse {
+  width:7px; height:7px; border-radius:50%; background:var(--green);
+  box-shadow:0 0 0 0 rgba(76,175,116,0.4);
+  animation: sonar 2s infinite;
+}
+@keyframes sonar {
+  0%   { box-shadow:0 0 0 0 rgba(76,175,116,0.5); }
+  70%  { box-shadow:0 0 0 8px rgba(76,175,116,0); }
+  100% { box-shadow:0 0 0 0 rgba(76,175,116,0); }
+}
+
+/* ══════════════════════════════════
+   NAV
+══════════════════════════════════ */
+.nav {
+  background: var(--dark2);
+  border-bottom: 1px solid var(--border);
+  display:flex; gap:0;
+  overflow-x:auto; padding:0 24px;
+  position:sticky; top:68px; z-index:400;
+}
+.nav-btn {
+  padding:15px 20px;
+  border:none; background:none; cursor:pointer;
+  font-family:'DM Sans', sans-serif;
+  font-size:13px; font-weight:500; color:var(--text-dim);
+  border-bottom:2px solid transparent;
+  white-space:nowrap; transition:all .2s;
+  display:flex; align-items:center; gap:7px;
+}
+.nav-btn:hover { color:var(--text); }
+.nav-btn.active { color:var(--gold); border-bottom-color:var(--gold); }
+.nav-badge {
+  min-width:18px; height:18px; border-radius:99px;
+  background:var(--dark4); color:var(--text-dim);
+  font-family:'DM Mono', monospace; font-size:9px; font-weight:700;
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:0 4px; border:1px solid var(--border);
+}
+.nav-btn.active .nav-badge { background:var(--gold-glow); color:var(--gold); border-color:var(--gold-dim); }
+
+/* ══════════════════════════════════
+   MAIN LAYOUT
+══════════════════════════════════ */
+.main { padding:24px; max-width:1500px; margin:0 auto; }
+.section { display:none; }
+.section.active { display:block; animation:fadeUp .3s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+/* ══════════════════════════════════
+   PAGE HEADER
+══════════════════════════════════ */
+.ph { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:24px; gap:16px; flex-wrap:wrap; }
+.ph-title { font-family:'Playfair Display', serif; font-size:24px; font-weight:700; color:var(--gold-light); }
+.ph-sub { font-size:12px; color:var(--text-dim); margin-top:4px; }
+.ph-right { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+
+/* ══════════════════════════════════
+   KPI CARDS
+══════════════════════════════════ */
+.kpi-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:14px; margin-bottom:24px;
+}
+.kpi-card {
+  background:var(--dark3); border:1px solid var(--border);
+  border-radius:14px; padding:20px;
+  position:relative; overflow:hidden;
+  transition:transform .2s, box-shadow .2s;
+  cursor:default;
+}
+.kpi-card:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(0,0,0,0.5); }
+.kpi-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+}
+.kpi-card.gold::before  { background:linear-gradient(90deg,var(--gold),var(--gold-light)); }
+.kpi-card.green::before { background:var(--green); }
+.kpi-card.red::before   { background:var(--red); }
+.kpi-card.blue::before  { background:var(--blue); }
+.kpi-card.purple::before{ background:var(--purple); }
+.kpi-card.teal::before  { background:var(--teal); }
+.kpi-card.amber::before { background:var(--amber); }
+.kpi-ico { font-size:22px; margin-bottom:10px; opacity:.7; }
+.kpi-label { font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1.2px; margin-bottom:8px; }
+.kpi-value { font-family:'DM Mono', monospace; font-size:22px; font-weight:500; line-height:1; }
+.kpi-card.gold   .kpi-value { color:var(--gold); }
+.kpi-card.green  .kpi-value { color:var(--green); }
+.kpi-card.red    .kpi-value { color:var(--red); }
+.kpi-card.blue   .kpi-value { color:var(--blue); }
+.kpi-card.purple .kpi-value { color:var(--purple); }
+.kpi-card.teal   .kpi-value { color:var(--teal); }
+.kpi-card.amber  .kpi-value { color:var(--amber); }
+.kpi-sub { font-size:11px; color:var(--text-dim); margin-top:6px; }
+
+/* ══════════════════════════════════
+   PANEL
+══════════════════════════════════ */
+.panel {
+  background:var(--dark3); border:1px solid var(--border);
+  border-radius:14px; overflow:hidden; margin-bottom:20px;
+}
+.panel-header {
+  padding:16px 20px; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+  background:var(--dark4); flex-wrap:wrap; gap:10px;
+}
+.panel-title {
+  font-family:'Playfair Display', serif;
+  font-size:15px; color:var(--gold-light);
+}
+.panel-body { padding:20px; }
+
+/* ══════════════════════════════════
+   FORM
+══════════════════════════════════ */
+.form-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; }
+.form-group { display:flex; flex-direction:column; gap:6px; }
+.form-group.full { grid-column:1/-1; }
+.form-group label {
+  font-size:10px; color:var(--text-dim);
+  text-transform:uppercase; letter-spacing:1px;
+  font-family:'DM Mono', monospace;
+}
+.form-group input, .form-group select, .form-group textarea {
+  background:var(--dark2); border:1px solid var(--border);
+  border-radius:8px; padding:10px 13px;
+  color:var(--text); font-family:'DM Sans', sans-serif;
+  font-size:13px; outline:none; width:100%;
+  transition:border-color .2s, box-shadow .2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color:var(--gold-dim);
+  box-shadow:0 0 0 3px rgba(201,168,76,0.1);
+}
+.form-group input::placeholder { color:var(--text-faint); }
+.form-group select option { background:var(--dark2); }
+.form-group textarea { resize:vertical; min-height:70px; }
+.form-hint { font-size:10px; color:var(--text-faint); font-family:'DM Mono',monospace; }
+.form-divider { grid-column:1/-1; height:1px; background:var(--border); margin:4px 0; }
+.form-section {
+  grid-column:1/-1; font-family:'DM Mono',monospace;
+  font-size:9px; font-weight:500; color:var(--text-dim);
+  text-transform:uppercase; letter-spacing:2px;
+}
+.form-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:16px; padding-top:16px; border-top:1px solid var(--border); flex-wrap:wrap; }
+
+/* Preview box */
+.prev-box {
+  grid-column:1/-1; background:var(--dark); border:1px solid var(--border);
+  border-radius:10px; padding:14px 18px;
+  display:flex; gap:24px; flex-wrap:wrap;
+}
+.prev-item { display:flex; flex-direction:column; gap:3px; }
+.prev-lbl { font-family:'DM Mono',monospace; font-size:9px; color:var(--text-faint); text-transform:uppercase; letter-spacing:1.5px; }
+.prev-val { font-family:'DM Mono',monospace; font-size:18px; font-weight:500; }
+
+/* ══════════════════════════════════
+   BUTTONS
+══════════════════════════════════ */
+.btn {
+  padding:10px 20px; border-radius:8px;
+  border:none; cursor:pointer;
+  font-family:'DM Sans', sans-serif;
+  font-size:13px; font-weight:600;
+  transition:all .2s;
+  display:inline-flex; align-items:center; gap:7px;
+  white-space:nowrap;
+}
+.btn svg { width:14px; height:14px; }
+.btn-gold { background:linear-gradient(135deg,var(--gold),var(--gold-dim)); color:var(--dark); }
+.btn-gold:hover { filter:brightness(1.12); transform:translateY(-1px); box-shadow:0 4px 16px rgba(201,168,76,0.3); }
+.btn-outline { background:transparent; border:1px solid var(--border); color:var(--text-dim); }
+.btn-outline:hover { border-color:var(--gold-dim); color:var(--gold); }
+.btn-green { background:var(--green); color:#fff; }
+.btn-green:hover { filter:brightness(1.1); transform:translateY(-1px); box-shadow:0 4px 14px rgba(76,175,116,0.3); }
+.btn-red { background:var(--red); color:#fff; }
+.btn-red:hover { filter:brightness(1.1); }
+.btn-blue { background:var(--blue); color:#fff; }
+.btn-blue:hover { filter:brightness(1.1); transform:translateY(-1px); }
+.btn-amber { background:var(--amber); color:var(--dark); }
+.btn-amber:hover { filter:brightness(1.1); }
+.btn-ghost { background:var(--dark4); border:1px solid var(--border); color:var(--text-dim); }
+.btn-ghost:hover { border-color:var(--border2); color:var(--text); }
+.btn-sm { padding:6px 12px; font-size:12px; border-radius:6px; }
+.btn-icon {
+  width:30px; height:30px; border-radius:7px;
+  background:var(--dark4); border:1px solid var(--border); color:var(--text-dim);
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:all .15s;
+}
+.btn-icon:hover { border-color:var(--border2); color:var(--text); }
+.btn-icon svg { width:13px; height:13px; }
+
+/* ══════════════════════════════════
+   TABLE
+══════════════════════════════════ */
+.tbl-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+thead tr { background:var(--dark4); border-bottom:1px solid var(--border); }
+thead th {
+  padding:11px 14px; text-align:left;
+  font-size:10px; text-transform:uppercase; letter-spacing:1px;
+  color:var(--text-dim); font-weight:500; white-space:nowrap;
+  font-family:'DM Mono', monospace;
+  cursor:pointer; user-select:none; transition:color .15s;
+}
+thead th:hover { color:var(--text); }
+tbody tr { border-bottom:1px solid var(--border); transition:background .12s; }
+tbody tr:last-child { border-bottom:none; }
+tbody tr:hover { background:rgba(201,168,76,0.025); }
+tbody tr.tr-red   { background:rgba(224,85,85,0.03); }
+tbody tr.tr-red:hover { background:rgba(224,85,85,0.06); }
+tbody tr.tr-amber { background:rgba(240,160,48,0.025); }
+tbody tr.tr-dim   { opacity:.5; }
+tbody td { padding:11px 14px; color:var(--text); vertical-align:middle; white-space:nowrap; }
+.mono { font-family:'DM Mono', monospace; font-size:12px; }
+
+/* ══════════════════════════════════
+   BADGES
+══════════════════════════════════ */
+.badge {
+  display:inline-flex; align-items:center; gap:4px;
+  padding:3px 10px; border-radius:20px;
+  font-size:10px; font-weight:600;
+  font-family:'DM Mono', monospace;
+  letter-spacing:.5px; white-space:nowrap; border:1px solid;
+}
+.badge::before { content:''; width:5px; height:5px; border-radius:50%; background:currentColor; }
+.badge-green  { color:var(--green);  border-color:rgba(76,175,116,0.3); background:rgba(76,175,116,0.1); }
+.badge-red    { color:var(--red);    border-color:rgba(224,85,85,0.3);  background:rgba(224,85,85,0.1); }
+.badge-gold   { color:var(--gold);   border-color:rgba(201,168,76,0.3); background:rgba(201,168,76,0.1); }
+.badge-blue   { color:var(--blue);   border-color:rgba(85,136,224,0.3); background:rgba(85,136,224,0.1); }
+.badge-purple { color:var(--purple); border-color:rgba(155,93,229,0.3); background:rgba(155,93,229,0.1); }
+.badge-amber  { color:var(--amber);  border-color:rgba(240,160,48,0.3); background:rgba(240,160,48,0.1); }
+.badge-teal   { color:var(--teal);   border-color:rgba(59,191,163,0.3); background:rgba(59,191,163,0.1); }
+.badge-red-pulse { animation:badge-pulse 1.2s infinite; }
+@keyframes badge-pulse {
+  0%,100%{ box-shadow:0 0 0 0 rgba(224,85,85,0.4); }
+  50%{ box-shadow:0 0 0 5px rgba(224,85,85,0); }
+}
+.badge-amber-pulse { animation:amber-pulse 2s infinite; }
+@keyframes amber-pulse {
+  0%,100%{ box-shadow:0 0 0 0 rgba(240,160,48,0.3); }
+  50%{ box-shadow:0 0 0 4px rgba(240,160,48,0); }
+}
+
+/* ══════════════════════════════════
+   CLIENT CELL
+══════════════════════════════════ */
+.cc { display:flex; align-items:center; gap:10px; }
+.av {
+  width:34px; height:34px; border-radius:9px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display', serif;
+  font-size:12px; font-weight:700; color:#fff;
+}
+.av-0{background:linear-gradient(135deg,#1d4ed8,#7c3aed)}
+.av-1{background:linear-gradient(135deg,#065f46,#0891b2)}
+.av-2{background:linear-gradient(135deg,#92400e,#dc2626)}
+.av-3{background:linear-gradient(135deg,#5b21b6,#be185d)}
+.av-4{background:linear-gradient(135deg,#0e7490,#1d4ed8)}
+.av-5{background:linear-gradient(135deg,#991b1b,#92400e)}
+.av-6{background:linear-gradient(135deg,#be185d,#7c3aed)}
+.av-7{background:linear-gradient(135deg,#064e3b,#065f46)}
+.cn { font-weight:600; color:var(--text); font-size:13px; }
+.ci { font-family:'DM Mono',monospace; font-size:9px; color:var(--text-faint); margin-top:2px; }
+
+/* ══════════════════════════════════
+   SEARCH & FILTER BAR
+══════════════════════════════════ */
+.sbar { display:flex; gap:8px; margin-bottom:16px; align-items:center; flex-wrap:wrap; }
+.sbar-input {
+  background:var(--dark2); border:1px solid var(--border);
+  border-radius:8px; padding:9px 13px;
+  color:var(--text); font-family:'DM Sans',sans-serif;
+  font-size:13px; outline:none; flex:1; min-width:180px;
+  transition:border-color .2s;
+}
+.sbar-input:focus { border-color:var(--gold-dim); }
+.sbar-input::placeholder { color:var(--text-faint); }
+.sbar-select {
+  background:var(--dark2); border:1px solid var(--border);
+  border-radius:8px; padding:9px 11px;
+  color:var(--text-dim); font-family:'DM Sans',sans-serif;
+  font-size:12px; font-weight:500; outline:none; cursor:pointer;
+  transition:border-color .2s; -webkit-appearance:none;
+}
+.sbar-select:focus { border-color:var(--gold-dim); }
+.sbar-select option { background:var(--dark2); }
+
+/* ══════════════════════════════════
+   SUMBAR
+══════════════════════════════════ */
+.sumbar {
+  background:var(--dark4); border-top:1px solid var(--border);
+  padding:11px 16px; display:flex; gap:24px; flex-wrap:wrap; align-items:center;
+  font-size:12px;
+}
+.sumbar span { color:var(--text-dim); }
+.sumbar strong { color:var(--text); margin-left:5px; font-family:'DM Mono',monospace; font-size:12px; }
+.sumbar-sep { flex:1; }
+
+/* Pagination */
+.pgn {
+  background:var(--dark4); border-top:1px solid var(--border);
+  padding:10px 16px; display:flex; align-items:center; justify-content:space-between;
+  font-family:'DM Mono',monospace; font-size:10px; color:var(--text-dim);
+}
+.pgn-btns { display:flex; gap:4px; }
+.pgn-btn {
+  width:26px; height:26px; border-radius:5px;
+  background:var(--dark3); border:1px solid var(--border);
+  color:var(--text-dim); cursor:pointer;
+  font-size:11px; display:flex; align-items:center; justify-content:center;
+  font-family:'DM Mono',monospace; transition:all .15s;
+}
+.pgn-btn:hover { border-color:var(--gold-dim); color:var(--gold); }
+.pgn-btn.on { background:var(--gold-dim); border-color:var(--gold); color:var(--gold-light); font-weight:700; }
+
+/* ══════════════════════════════════
+   CREDIT CARDS (Corre Holding style)
+══════════════════════════════════ */
+.credit-card {
+  background:var(--dark3); border:1px solid var(--border);
+  border-radius:14px; padding:22px;
+  margin-bottom:14px; position:relative; overflow:hidden;
+  transition:transform .2s, box-shadow .2s;
+}
+.credit-card:hover { transform:translateY(-1px); box-shadow:0 8px 32px rgba(0,0,0,0.4); }
+.credit-card::after {
+  content:''; position:absolute; top:-20px; right:-20px;
+  width:100px; height:100px;
+  background:radial-gradient(circle, var(--gold-glow), transparent 70%);
+  border-radius:50%; pointer-events:none;
+}
+.credit-card.cc-red { border-color:rgba(224,85,85,0.25); }
+.credit-card.cc-red::after { background:radial-gradient(circle,rgba(224,85,85,0.07),transparent 70%); }
+.credit-card.cc-paid { opacity:.6; }
+.credit-card.cc-paid:hover { opacity:.8; }
+
+.cc-head { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; }
+.cc-name {
+  font-family:'Playfair Display', serif;
+  font-size:18px; font-weight:700; color:var(--gold-light); line-height:1.1;
+}
+.cc-contact { font-size:12px; color:var(--text-dim); margin-top:4px; }
+.cc-amount { text-align:right; }
+.cc-amount-val {
+  font-family:'DM Mono', monospace;
+  font-size:22px; font-weight:500; color:var(--text);
+  margin-top:6px;
+}
+.cc-bar-wrap {
+  background:var(--dark4); border-radius:6px;
+  height:8px; overflow:hidden; margin:12px 0 6px;
+}
+.cc-bar { height:100%; border-radius:6px; transition:width .6s cubic-bezier(.4,0,.2,1); position:relative; }
+.cc-bar::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);
+  animation:shimmer 2.5s infinite;
+}
+@keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(200%)} }
+
+.cc-bar-info {
+  display:flex; justify-content:space-between;
+  font-family:'DM Mono',monospace; font-size:10px; color:var(--text-dim);
+  margin-bottom:14px;
+}
+.cc-details {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:10px; margin-top:4px;
+}
+.cc-detail { }
+.cc-detail .lbl { font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.8px; margin-bottom:3px; }
+.cc-detail .val { font-size:13px; font-weight:500; color:var(--text); }
+.cc-actions { display:flex; gap:8px; margin-top:16px; flex-wrap:wrap; }
+
+/* ══════════════════════════════════
+   DUE ALERTS STRIP (urgent banners)
+══════════════════════════════════ */
+.due-strip {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 16px; border-radius:10px;
+  margin-bottom:8px; border:1px solid;
+}
+.due-strip.urgent {
+  background:rgba(224,85,85,0.06); border-color:rgba(224,85,85,0.25);
+  color:var(--red);
+}
+.due-strip.warning {
+  background:rgba(240,160,48,0.06); border-color:rgba(240,160,48,0.25);
+  color:var(--amber);
+}
+.due-strip.ok {
+  background:rgba(76,175,116,0.05); border-color:rgba(76,175,116,0.2);
+  color:var(--green);
+}
+.due-strip-ico { font-size:18px; flex-shrink:0; }
+.due-strip-body { flex:1; }
+.due-strip-title { font-weight:600; font-size:13px; }
+.due-strip-sub { font-family:'DM Mono',monospace; font-size:10px; opacity:.75; margin-top:2px; }
+.due-strip-sub a { cursor:pointer; text-decoration:underline; opacity:.85; }
+.due-strip-days {
+  font-family:'DM Mono',monospace; font-size:24px; font-weight:700;
+  line-height:1; text-align:right; flex-shrink:0;
+}
+.due-strip-days small { display:block; font-size:9px; font-weight:400; opacity:.7; text-align:right; }
+
+/* ══════════════════════════════════
+   NOTA CADERNO (ledger note)
+══════════════════════════════════ */
+.nota-box {
+  background: #120D02;
+  border: 1px solid rgba(201,168,76,0.2);
+  border-left: 4px solid var(--gold);
+  border-radius: 3px 12px 12px 3px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display:flex; gap:14px; align-items:flex-start;
+  position:relative; overflow:hidden;
+}
+.nota-box::after {
+  content:''; position:absolute; inset:0;
+  background:repeating-linear-gradient(
+    to bottom, transparent 0px, transparent 24px,
+    rgba(201,168,76,0.04) 24px, rgba(201,168,76,0.04) 25px
+  );
+  pointer-events:none;
+}
+.nota-icon { font-size:20px; flex-shrink:0; margin-top:1px; }
+.nota-body { }
+.nota-title {
+  font-family:'Playfair Display', serif;
+  font-size:14px; font-weight:700; color:var(--gold-light);
+  margin-bottom:5px;
+}
+.nota-text {
+  font-size:13px; color:var(--text-dim); line-height:1.65;
+  font-family:'DM Sans', sans-serif;
+}
+
+/* Caderno inline note (green terminal) */
+.caderno-mini {
+  display:inline-block;
+  background:#1A2010; border:1px solid rgba(163,230,53,0.2);
+  border-left:3px solid #84cc16;
+  border-radius:2px 6px 6px 2px;
+  padding:4px 8px 4px 10px;
+  font-family:'DM Mono', monospace;
+  font-size:10px; color:#bef264; line-height:1.4;
+  max-width:180px; word-break:break-word;
+}
+
+/* ══════════════════════════════════
+   PAYMENT MODAL
+══════════════════════════════════ */
+.modal-ov {
+  position:fixed; inset:0; background:rgba(0,0,0,0.75);
+  display:flex; align-items:center; justify-content:center;
+  z-index:600; opacity:0; pointer-events:none;
+  transition:opacity .2s; padding:20px;
+}
+.modal-ov.open { opacity:1; pointer-events:all; }
+.modal-box {
+  background:var(--dark3); border:1px solid var(--border);
+  border-radius:16px; width:460px; max-width:100%;
+  max-height:92vh; overflow-y:auto;
+  box-shadow:0 32px 80px rgba(0,0,0,0.9);
+  transform:scale(.97) translateY(10px);
+  transition:transform .25s cubic-bezier(.32,.72,0,1);
+}
+.modal-ov.open .modal-box { transform:scale(1) translateY(0); }
+.modal-head {
+  padding:22px 24px 18px; border-bottom:1px solid var(--border);
+  background:var(--dark4); border-radius:16px 16px 0 0;
+  display:flex; align-items:flex-start; justify-content:space-between;
+}
+.modal-title {
+  font-family:'Playfair Display', serif;
+  font-size:17px; font-weight:700; color:var(--gold-light);
+}
+.modal-sub { font-size:11px; color:var(--text-dim); margin-top:3px; }
+.modal-close {
+  width:28px; height:28px; border-radius:6px;
+  background:var(--dark3); border:1px solid var(--border);
+  color:var(--text-dim); cursor:pointer; display:flex;
+  align-items:center; justify-content:center; font-size:16px;
+  transition:all .15s; flex-shrink:0;
+}
+.modal-close:hover { background:var(--red-dim); border-color:rgba(224,85,85,0.3); color:var(--red); }
+.modal-body { padding:22px 24px; }
+.modal-foot {
+  padding:14px 24px 20px; border-top:1px solid var(--border);
+  display:flex; gap:8px; justify-content:space-between; align-items:center; flex-wrap:wrap;
+}
+
+/* ══════════════════════════════════
+   DELETE MODAL
+══════════════════════════════════ */
+.del-modal-ov {
+  position:fixed; inset:0; background:rgba(0,0,0,0.7);
+  display:flex; align-items:center; justify-content:center;
+  z-index:700; opacity:0; pointer-events:none; transition:opacity .2s;
+}
+.del-modal-ov.open { opacity:1; pointer-events:all; }
+.del-modal {
+  background:var(--dark3); border:1px solid var(--border);
+  border-radius:16px; padding:28px; max-width:380px; width:90%;
+  transform:scale(.95); transition:transform .2s;
+}
+.del-modal-ov.open .del-modal { transform:scale(1); }
+.del-modal h3 { font-family:'Playfair Display',serif; color:var(--gold-light); margin-bottom:8px; }
+.del-modal p { color:var(--text-dim); font-size:13px; margin-bottom:20px; line-height:1.5; }
+.del-actions { display:flex; gap:10px; justify-content:flex-end; }
+
+/* ══════════════════════════════════
+   DRAWER
+══════════════════════════════════ */
+.drawer-ov {
+  position:fixed; inset:0; z-index:400;
+  background:rgba(0,0,0,0.45); backdrop-filter:blur(3px); display:none;
+}
+.drawer-ov.open { display:block; }
+.drawer {
+  position:fixed; right:0; top:68px; bottom:0; z-index:450;
+  width:380px; max-width:100vw;
+  background:var(--dark3); border-left:1px solid var(--border);
+  box-shadow:-16px 0 60px rgba(0,0,0,0.7);
+  overflow-y:auto; transform:translateX(100%);
+  transition:transform .3s cubic-bezier(.32,.72,0,1);
+}
+.drawer.open { transform:translateX(0); }
+.drh {
+  padding:20px; border-bottom:1px solid var(--border);
+  background:var(--dark4); display:flex; align-items:center; justify-content:space-between;
+}
+.drb { padding:18px; display:flex; flex-direction:column; gap:14px; }
+.dr-section {
+  background:var(--dark4); border:1px solid var(--border);
+  border-radius:10px; padding:14px;
+}
+.dr-sect-title {
+  font-family:'DM Mono',monospace; font-size:9px; font-weight:700;
+  color:var(--text-faint); text-transform:uppercase; letter-spacing:2px; margin-bottom:12px;
+}
+.dr-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:8px; }
+.dr-row:last-child { margin-bottom:0; }
+.dr-k { font-size:12px; color:var(--text-dim); font-weight:500; }
+.dr-v { font-family:'DM Mono',monospace; font-size:12px; font-weight:600; color:var(--text); text-align:right; }
+.dr-alert { border-radius:8px; padding:10px 14px; font-size:12px; line-height:1.5; border:1px solid; }
+.dr-alert.ok     { background:rgba(76,175,116,0.07); border-color:rgba(76,175,116,0.2); color:var(--green); }
+.dr-alert.warn   { background:rgba(240,160,48,0.07); border-color:rgba(240,160,48,0.2); color:var(--amber); }
+.dr-alert.urgent { background:rgba(224,85,85,0.07); border-color:rgba(224,85,85,0.2); color:var(--red); }
+.dr-alert.paid   { background:rgba(85,136,224,0.07); border-color:rgba(85,136,224,0.2); color:var(--blue); }
+
+/* ══════════════════════════════════
+   DASHBOARD
+══════════════════════════════════ */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+@media(max-width:768px) { .two-col { grid-template-columns:1fr; } }
+
+/* ══════════════════════════════════
+   EMPTY
+══════════════════════════════════ */
+.empty { text-align:center; padding:56px 20px; color:var(--text-dim); }
+.empty-ico { font-size:40px; margin-bottom:14px; opacity:.4; }
+.empty p { font-size:14px; font-weight:600; color:var(--text-dim); margin-bottom:4px; }
+.empty small { font-size:12px; }
+
+/* ══════════════════════════════════
+   TOAST
+══════════════════════════════════ */
+.toast {
+  position:fixed; bottom:22px; right:22px; z-index:1000;
+  background:var(--dark4); border:1px solid var(--gold-dim);
+  color:var(--gold-light); padding:12px 20px; border-radius:10px;
+  font-size:13px; opacity:0; transform:translateY(10px);
+  transition:all .3s; pointer-events:none;
+  box-shadow:0 8px 30px rgba(0,0,0,0.5);
+  display:flex; align-items:center; gap:8px;
+}
+.toast.show { opacity:1; transform:translateY(0); }
+
+/* ══════════════════════════════════
+   IPTV / NETFLIX SPECIFIC
+══════════════════════════════════ */
+.exp-bar-wrap { min-width:100px; }
+.exp-bar-track { height:4px; background:var(--dark); border-radius:99px; overflow:hidden; margin:4px 0; }
+.exp-bar-fill { height:100%; border-radius:99px; transition:width .5s; }
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media(max-width:1100px) { .two-col { grid-template-columns:1fr; } }
+@media(max-width:700px) {
+  .kpi-grid { grid-template-columns:1fr 1fr; }
+  .form-grid { grid-template-columns:1fr; }
+  .main { padding:14px; }
+  .header { padding:0 16px; }
+  .hdr-badge { display:none; }
+  .drawer { width:100vw; top:0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header class="header">
+  <div class="logo-area">
+    <div class="logo-icon">MR</div>
+    <div class="logo-text">
+      <h1>MR-BYPASSER CORP.</h1>
+      <span>Financial Intelligence Platform &nbsp;·&nbsp; <span style="color:var(--gold-dim);font-size:10px;letter-spacing:.05em">dev. Elton Jackson</span></span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="live-dot"><div class="lpulse"></div>LIVE</div>
+    <div class="hdr-badge">🏦 Gestão Financeira</div>
+    <div class="hdr-clock" id="clock">--:--:--</div>
+  </div>
+</header>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav class="nav">
+  <button class="nav-btn active" onclick="nav('dash',this)">
+    📊 Overview
+  </button>
+  <button class="nav-btn" onclick="nav('cred',this)">
+    🏦 Microcrédito <span class="nav-badge" id="nb-cred">0</span>
+  </button>
+  <button class="nav-btn" onclick="nav('iptv',this)">
+    📡 IPTV <span class="nav-badge" id="nb-iptv">0</span>
+  </button>
+  <button class="nav-btn" onclick="nav('nf',this)">
+    🎬 Netflix <span class="nav-badge" id="nb-nf">0</span>
+  </button>
+  <button class="nav-btn" onclick="nav('rel',this)">
+    📊 Relatórios
+  </button>
+</nav>
+
+<main class="main">
+
+<!-- ══════════════ OVERVIEW ══════════════ -->
+<div class="section active" id="sec-dash">
+  <div class="ph">
+    <div>
+      <div class="ph-title">Overview</div>
+      <div class="ph-sub" id="dash-date">Painel executivo consolidado · Actualizado em tempo real</div>
+    </div>
+    <div class="ph-right">
+      <button class="btn btn-ghost btn-sm" onclick="exportAll()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Exportar Tudo
+      </button>
+    </div>
+  </div>
+  <div class="kpi-grid" id="kpi-dash"></div>
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-header"><span class="panel-title">⚡ Carteira de Crédito</span></div>
+      <div class="panel-body" id="dash-cred-body"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><span class="panel-title">📡 IPTV · Status</span></div>
+      <div class="panel-body" id="dash-iptv-body"></div>
+    </div>
+  </div>
+  <div class="panel" id="dash-alerts-panel">
+    <div class="panel-header"><span class="panel-title">⚠️ Alertas Críticos em Tempo Real</span></div>
+    <div class="panel-body" id="dash-alerts-body"></div>
+  </div>
+</div>
+
+<!-- ══════════════ MICROCRÉDITO ══════════════ -->
+<div class="section" id="sec-cred">
+  <div class="ph">
+    <div>
+      <div class="ph-title">🏦 Microcrédito</div>
+      <div class="ph-sub">Carteira de empréstimos · Progresso de recuperação · Alertas automáticos</div>
+    </div>
+    <div class="ph-right">
+      <button class="btn btn-ghost btn-sm" onclick="exportCSV('cred')">CSV</button>
+      <button class="btn btn-gold" onclick="scrollToInlineForm()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M12 4v16m8-8H4"/></svg>
+        Novo Empréstimo
+      </button>
+    </div>
+  </div>
+
+  <!-- ALERTA DE POLÍTICA OBRIGATÓRIA -->
+  <div style="background:linear-gradient(135deg,rgba(224,85,85,0.12),rgba(201,168,76,0.06));border:1.5px solid rgba(224,85,85,0.45);border-left:5px solid var(--red);border-radius:12px;padding:20px 22px;margin-bottom:20px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;width:180px;height:100%;background:repeating-linear-gradient(-45deg,transparent,transparent 8px,rgba(224,85,85,0.04) 8px,rgba(224,85,85,0.04) 16px);pointer-events:none"></div>
+    <div style="display:flex;gap:16px;align-items:flex-start">
+      <div style="flex-shrink:0;width:42px;height:42px;background:var(--red);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 0 18px rgba(224,85,85,0.4)">🚫</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
+          <span style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--red);letter-spacing:0.3px">DIRECTIVA OPERACIONAL — REGISTO OBRIGATÓRIO</span>
+          <span style="background:rgba(224,85,85,0.2);border:1px solid rgba(224,85,85,0.4);color:var(--red);font-family:'DM Mono',monospace;font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:1.5px;text-transform:uppercase">VINCULATIVO</span>
+        </div>
+        <div style="font-size:13.5px;color:var(--text);line-height:1.75;font-weight:500">
+          A partir deste momento, <strong style="color:var(--gold)">nenhuma entrega de produto ou transferência de valores</strong> será autorizada sem <strong style="color:var(--gold)">registo completo, validação e rastreabilidade</strong> neste sistema.
+        </div>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(224,85,85,0.2);font-size:12px;color:var(--red);font-weight:600;letter-spacing:0.2px">
+          ⚠️ Qualquer acção fora deste procedimento será considerada <strong>não autorizada</strong>.
+        </div>
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:6px;background:rgba(224,85,85,0.1);border:1px solid rgba(224,85,85,0.25);border-radius:6px;padding:5px 12px;font-size:11px;color:var(--text-dim)">
+            <span style="color:var(--red)">●</span> Registo obrigatório antes da entrega
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;background:rgba(224,85,85,0.1);border:1px solid rgba(224,85,85,0.25);border-radius:6px;padding:5px 12px;font-size:11px;color:var(--text-dim)">
+            <span style="color:var(--red)">●</span> Validação no sistema antes da transferência
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;background:rgba(224,85,85,0.1);border:1px solid rgba(224,85,85,0.25);border-radius:6px;padding:5px 12px;font-size:11px;color:var(--text-dim)">
+            <span style="color:var(--red)">●</span> Rastreabilidade total exigida
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INLINE FORM: NOVO MICROCRÉDITO -->
+  <div class="panel" style="margin-bottom:18px" id="inline-cred-panel">
+    <div class="panel-header" style="cursor:pointer;user-select:none" onclick="toggleInlineForm()">
+      <span class="panel-title" style="color:var(--purple);font-size:15px">＋ Novo Microcrédito</span>
+      <span id="inline-toggle-ico" style="color:var(--text-dim);font-size:12px">▲ Recolher</span>
+    </div>
+    <div class="panel-body" id="inline-form-body" style="padding:20px 24px">
+      <!-- ROW 1 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;gap:14px;align-items:end;margin-bottom:16px">
+        <div class="form-group" style="margin:0">
+          <label style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:5px;display:block">Nome do Cliente</label>
+          <input id="icf-dev" placeholder="Nome completo" autocomplete="off" style="width:100%;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;padding:10px 13px;color:var(--text);font-size:13px;outline:none" onfocus="this.style.borderColor='var(--purple)'" onblur="this.style.borderColor='var(--border2)'">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:5px;display:block">Contacto</label>
+          <input id="icf-contact" placeholder="Telemóvel / WhatsApp" style="width:100%;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;padding:10px 13px;color:var(--text);font-size:13px;outline:none" onfocus="this.style.borderColor='var(--purple)'" onblur="this.style.borderColor='var(--border2)'">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:5px;display:block">Valor do Crédito (MZN)</label>
+          <div style="position:relative">
+            <input id="icf-cap" type="number" min="0" placeholder="0" oninput="icprev()" style="width:100%;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;padding:10px 36px 10px 13px;color:var(--text);font-size:13px;outline:none" onfocus="this.style.borderColor='var(--purple)'" onblur="this.style.borderColor='var(--border2)'">
+            <span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:14px;pointer-events:none">⬆⬇</span>
+          </div>
+        </div>
+        <div class="form-group" style="margin:0">
+          <label style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:5px;display:block">Juro (%)</label>
+          <div style="position:relative">
+            <input id="icf-jur" type="number" step="1" min="0" max="100" placeholder="0" oninput="icprev()" style="width:100%;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;padding:10px 36px 10px 13px;color:var(--text);font-size:13px;outline:none" onfocus="this.style.borderColor='var(--purple)'" onblur="this.style.borderColor='var(--border2)'" value="30">
+            <span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:14px;pointer-events:none">⬆⬇</span>
+          </div>
+        </div>
+        <div class="form-group" style="margin:0">
+          <label style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:5px;display:block">Total a Pagar (MZN)</label>
+          <input id="icf-total" readonly placeholder="Auto" style="width:100%;background:var(--dark4);border:1px solid var(--border);border-radius:8px;padding:10px 13px;color:var(--gold-light);font-size:13px;font-weight:700;outline:none;cursor:not-allowed">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:5px;display:block">Método Juro</label>
+          <select id="icf-metodo" onchange="icprev()" style="width:100%;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;padding:10px 13px;color:var(--text);font-size:13px;outline:none;cursor:pointer" onfocus="this.style.borderColor='var(--purple)'" onblur="this.style.borderColor='var(--border2)'">
+            <option value="simples">Simples (flat)</option>
+            <option value="composto">Composto</option>
+            <option value="decrescente">Saldo Devedor</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin:0">
+          <label style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:5px;display:block">Nº Prestações</label>
+          <input id="icf-prest" type="number" min="1" max="60" value="1" oninput="icprev()" style="width:100%;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;padding:10px 13px;color:var(--text);font-size:13px;outline:none" onfocus="this.style.borderColor='var(--purple)'" onblur="this.style.borderColor='var(--border2)'">
+        </div>
+      </div>
+      <!-- ROW 2 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:14px;align-items:end;margin-bottom:20px">
+        <div class="form-group" style="margin:0">
+          <label style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:5px;display:block">Data do Empréstimo</label>
+          <input id="icf-de" type="date" style="width:100%;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;padding:10px 13px;color:var(--text);font-size:13px;outline:none" onfocus="this.style.borderColor='var(--purple)'" onblur="this.style.borderColor='var(--border2)'">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:5px;display:block">Data de Vencimento</label>
+          <input id="icf-dv" type="date" style="width:100%;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;padding:10px 13px;color:var(--text);font-size:13px;outline:none" onfocus="this.style.borderColor='var(--purple)'" onblur="this.style.borderColor='var(--border2)'">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:5px;display:block">Produto / Descrição</label>
+          <input id="icf-prod" placeholder="O que foi emprestado…" style="width:100%;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;padding:10px 13px;color:var(--text);font-size:13px;outline:none" onfocus="this.style.borderColor='var(--purple)'" onblur="this.style.borderColor='var(--border2)'">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:5px;display:block">Garantia</label>
+          <input id="icf-gar" placeholder="Garantia apresentada…" style="width:100%;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;padding:10px 13px;color:var(--text);font-size:13px;outline:none" onfocus="this.style.borderColor='var(--purple)'" onblur="this.style.borderColor='var(--border2)'">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:5px;display:block">Tipo</label>
+          <select id="icf-tipo" style="width:100%;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;padding:10px 13px;color:var(--text);font-size:13px;outline:none;cursor:pointer" onfocus="this.style.borderColor='var(--purple)'" onblur="this.style.borderColor='var(--border2)'">
+            <option>Dinheiro</option>
+            <option>Produto</option>
+            <option>Misto</option>
+          </select>
+        </div>
+      </div>
+      <!-- ACTIONS -->
+      <div style="display:flex;justify-content:flex-end;align-items:center;gap:12px;padding-top:4px;border-top:1px solid var(--border)">
+        <div id="icf-prev" style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim);margin-right:auto"></div>
+        <button class="btn btn-outline" onclick="icfClear()" style="padding:9px 20px">Limpar</button>
+        <button class="btn btn-gold" onclick="saveInlineCred()" style="padding:9px 22px;font-size:13px">
+          🏦 Registar Crédito
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DUE ALERTS -->
+  <div id="cred-due-strip" style="margin-bottom:16px"></div>
+
+  <!-- KPIs -->
+  <div class="kpi-grid" id="kpi-cred"></div>
+
+  <!-- CREDIT CARDS LIST -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">📋 Créditos Activos</span>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <input class="sbar-input" id="sc" placeholder="🔍 Pesquisar devedor…" oninput="renderCred()" style="width:200px">
+        <select class="sbar-select" id="fc" onchange="renderCred()">
+          <option value="">Todos os Status</option>
+          <option value="ativo">Activos</option>
+          <option value="pago">Liquidados</option>
+          <option value="vencido">Vencidos</option>
+        </select>
+      </div>
+    </div>
+    <div class="panel-body" id="cred-list" style="padding:0">
+      <!-- cards rendered here -->
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ IPTV ══════════════ -->
+<div class="section" id="sec-iptv">
+  <div class="ph">
+    <div>
+      <div class="ph-title">📡 Subscrições IPTV</div>
+      <div class="ph-sub">Controlo de expiração · Renovações · Receita activa</div>
+    </div>
+    <div class="ph-right">
+      <input class="sbar-input" id="si" placeholder="🔍 Pesquisar…" oninput="applyI()" style="width:180px">
+      <select class="sbar-select" id="fi" onchange="applyI()">
+        <option value="">Todos</option>
+        <option value="ativo">Activos</option>
+        <option value="vencido">Vencidos</option>
+      </select>
+      <button class="btn btn-ghost btn-sm" onclick="exportCSV('iptv')">CSV</button>
+      <button class="btn btn-green" onclick="openIPTVModal()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M12 4v16m8-8H4"/></svg>
+        Nova Subscrição
+      </button>
+    </div>
+  </div>
+  <div class="kpi-grid" id="kpi-iptv"></div>
+  <div class="panel">
+    <div class="panel-header"><span class="panel-title">📋 Clientes IPTV</span></div>
+    <div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>#</th><th>CLIENTE</th><th>ID SERVIÇO</th>
+            <th>EXPIRAÇÃO</th><th>DIAS REST.</th><th>ESTADO</th>
+            <th>RENOVADO</th><th>VALOR</th><th>ALERTA</th><th>ACÇÕES</th>
+          </tr></thead>
+          <tbody id="tb-iptv"></tbody>
+        </table>
+      </div>
+      <div class="sumbar" id="sum-iptv"></div>
+      <div class="pgn" id="pgn-iptv"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ NETFLIX ══════════════ -->
+<div class="section" id="sec-nf">
+  <div class="ph">
+    <div>
+      <div class="ph-title">🎬 Subscrições Netflix</div>
+      <div class="ph-sub">Gestão de contas · Planos · Cobranças · Expiração automática</div>
+    </div>
+    <div class="ph-right">
+      <input class="sbar-input" id="sn" placeholder="🔍 Pesquisar…" oninput="applyN()" style="width:180px">
+      <select class="sbar-select" id="fn-st" onchange="applyN()">
+        <option value="">Todos</option>
+        <option value="ok">Activos</option>
+        <option value="exp">Expirados</option>
+        <option value="vence">Vence em Breve</option>
+      </select>
+      <select class="sbar-select" id="fn-pg" onchange="applyN()">
+        <option value="">Todos Pgtos</option>
+        <option value="PAGO">Pago</option>
+        <option value="PENDENTE">Pendente</option>
+      </select>
+      <button class="btn btn-ghost btn-sm" onclick="exportCSV('nf')">CSV</button>
+      <button class="btn btn-red" onclick="openNFModal()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M12 4v16m8-8H4"/></svg>
+        Nova Subscrição
+      </button>
+    </div>
+  </div>
+  <div class="kpi-grid" id="kpi-nf"></div>
+  <div class="panel">
+    <div class="panel-header"><span class="panel-title">📋 Subscritores Netflix</span></div>
+    <div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>#</th><th>CLIENTE</th><th>CÓD.</th>
+            <th>DATA PGTO.</th><th>EXPIRAÇÃO</th><th>DIAS REST.</th>
+            <th>ESTADO</th><th>VALOR</th><th>PLANO</th><th>PGTO.</th><th>ALERTA</th>
+            <th>ACÇÕES</th>
+          </tr></thead>
+          <tbody id="tb-nf"></tbody>
+        </table>
+      </div>
+      <div class="sumbar" id="sum-nf"></div>
+      <div class="pgn" id="pgn-nf"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ RELATÓRIOS ══════════════ -->
+<div class="section" id="sec-rel">
+  <div class="ph">
+    <div>
+      <div class="ph-title">📊 Relatório de Lucros</div>
+      <div class="ph-sub" id="rel-sub-title">Análise financeira por período · Lucros reais cobrados</div>
+    </div>
+    <div class="ph-right">
+      <select class="sbar-select" id="rel-tipo" onchange="renderRel()">
+        <option value="mes">Mês específico</option>
+        <option value="intervalo">Intervalo de datas</option>
+        <option value="ano">Ano completo</option>
+      </select>
+      <!-- Seletor mês -->
+      <div id="rel-mes-wrap" style="display:flex;gap:6px;align-items:center">
+        <select class="sbar-select" id="rel-mes" onchange="renderRel()"></select>
+        <select class="sbar-select" id="rel-ano" onchange="renderRel()"></select>
+      </div>
+      <!-- Intervalo -->
+      <div id="rel-intervalo-wrap" style="display:none;gap:6px;align-items:center">
+        <input type="date" id="rel-de" class="sbar-input" style="width:140px" onchange="renderRel()">
+        <span style="color:var(--text-dim);font-size:12px">até</span>
+        <input type="date" id="rel-ate" class="sbar-input" style="width:140px" onchange="renderRel()">
+      </div>
+      <button class="btn btn-ghost btn-sm" onclick="exportRelCSV()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        CSV
+      </button>
+      <button class="btn btn-gold btn-sm" onclick="printRel()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        Imprimir
+      </button>
+    </div>
+  </div>
+
+  <!-- Caixa destaque LUCRO DO PERÍODO -->
+  <div id="rel-lucro-banner" style="margin-bottom:20px"></div>
+
+  <!-- KPIs do período -->
+  <div class="kpi-grid" id="kpi-rel" style="margin-bottom:20px"></div>
+
+  <!-- Duas colunas: Crédito cobrado + Subscrições -->
+  <div class="two-col" style="margin-bottom:20px">
+    <div class="panel">
+      <div class="panel-header"><span class="panel-title">🏦 Juros Cobrados no Período</span></div>
+      <div id="rel-juros-lista" style="padding:0"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><span class="panel-title">📡 Subscrições Recebidas no Período</span></div>
+      <div id="rel-subscr-lista" style="padding:0"></div>
+    </div>
+  </div>
+
+  <!-- Tabela detalhada de pagamentos do período -->
+  <div class="panel" style="margin-bottom:20px">
+    <div class="panel-header">
+      <span class="panel-title">💳 Pagamentos Recebidos no Período</span>
+      <span id="rel-pgto-count" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim)"></span>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th><th>DEVEDOR / CLIENTE</th><th>FONTE</th><th>DATA</th>
+          <th>CAPITAL RECUP.</th><th>JUROS COBRADOS</th><th>MORA COBRADA</th>
+          <th>TOTAL RECEBIDO</th><th>MODO</th><th>NOTAS</th>
+        </tr></thead>
+        <tbody id="tb-rel-pgtos"></tbody>
+      </table>
+    </div>
+    <div class="sumbar" id="sum-rel-pgtos"></div>
+  </div>
+
+  <!-- Empréstimos emitidos no período -->
+  <div class="panel" style="margin-bottom:20px">
+    <div class="panel-header"><span class="panel-title">📤 Crédito Emitido no Período</span></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th><th>DEVEDOR</th><th>CAPITAL</th><th>JURO%</th><th>MÉTODO</th>
+          <th>TOTAL CONTRAT.</th><th>LUCRO ESPERADO</th><th>DT EMPRÉST.</th><th>DT VENC.</th><th>ESTADO</th>
+        </tr></thead>
+        <tbody id="tb-rel-emitidos"></tbody>
+      </table>
+    </div>
+    <div class="sumbar" id="sum-rel-emitidos"></div>
+  </div>
+
+  <!-- Subscrições vencidas/pagas no período -->
+  <div class="panel">
+    <div class="panel-header"><span class="panel-title">📡🎬 Subscrições com Pagamento no Período</span></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th><th>CLIENTE</th><th>SERVIÇO</th><th>DATA PGTO.</th><th>VALOR</th><th>ESTADO</th>
+        </tr></thead>
+        <tbody id="tb-rel-subscr"></tbody>
+      </table>
+    </div>
+    <div class="sumbar" id="sum-rel-subscr"></div>
+  </div>
+</div>
+
+</main>
+
+<!-- ══════════════ MODAL CRÉDITO ══════════════ -->
+<div class="modal-ov" id="ov-cred" onclick="if(event.target===this)closeCredModal()">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div>
+        <div class="modal-title" id="cred-modal-title">Novo Empréstimo</div>
+        <div class="modal-sub">Preencha todos os campos obrigatórios</div>
+      </div>
+      <button class="modal-close" onclick="closeCredModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-section">Identificação</div>
+        <div class="form-group full">
+          <label>Nome do Devedor *</label>
+          <input id="cf-dev" placeholder="Nome completo" autocomplete="off">
+        </div>
+        <div class="form-divider"></div>
+        <div class="form-section">Condições Financeiras</div>
+        <div class="form-group">
+          <label>Capital (MZN) *</label>
+          <input id="cf-cap" type="number" min="0" placeholder="0" oninput="cprev()">
+        </div>
+        <div class="form-group">
+          <label>Taxa de Juros (%) *</label>
+          <input id="cf-jur" type="number" step="1" min="0" max="200" placeholder="30" oninput="cprev()">
+          <div class="form-hint">Ex: 30 = 30% · 20 = 20% · 15 = 15%</div>
+        </div>
+        <div class="form-group">
+          <label>Valor Já Pago (MZN)</label>
+          <input id="cf-pag" type="number" min="0" placeholder="0">
+        </div>
+        <div class="form-group">
+          <label>Método de Juro</label>
+          <select id="cf-metodo">
+            <option value="simples">Simples (flat)</option>
+            <option value="composto">Composto (bancário)</option>
+            <option value="decrescente">Saldo Devedor (amortização)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Nº Prestações</label>
+          <input id="cf-prestacoes" type="number" min="1" max="60" placeholder="1" value="1">
+          <div class="form-hint">1 = pagamento único · 3, 6, 12…</div>
+        </div>
+        <div class="form-divider"></div>
+        <div class="form-section">Datas</div>
+        <div class="form-group">
+          <label>Data Empréstimo *</label>
+          <input id="cf-de" type="date">
+        </div>
+        <div class="form-group">
+          <label>Data Vencimento *</label>
+          <input id="cf-dv" type="date">
+        </div>
+        <div class="form-group">
+          <label>Data Pagamento Real</label>
+          <input id="cf-dp" type="date">
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="cf-st">
+            <option value="auto">Automático</option>
+            <option>🟢 EM DIA</option><option>⚠️ VENCE EM BREVE</option>
+            <option>🔴 ATRASADO</option><option>🔴 MUITO ATRASADO</option>
+            <option>✅ LIQUIDADO</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Notas / Caderno</label>
+          <input id="cf-not" placeholder="Garantias, observações, condições especiais…">
+        </div>
+        <div id="cprev-box" class="prev-box" style="display:none"></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeCredModal()">Cancelar</button>
+      <button class="btn btn-gold" onclick="saveCred()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+        Guardar Registo
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ MODAL PAGAMENTO BANCÁRIO ══════════════ -->
+<div class="modal-ov" id="ov-pay" onclick="if(event.target===this)closePayModal()">
+  <div class="modal-box" style="max-width:560px">
+    <div class="modal-head">
+      <div>
+        <div class="modal-title" id="pay-title">Registar Pagamento</div>
+        <div class="modal-sub" id="pay-sub">Pagamento parcial ou total · Sistema bancário</div>
+      </div>
+      <button class="modal-close" onclick="closePayModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <!-- Situação actual do empréstimo -->
+      <div id="pay-due-info" style="margin-bottom:16px"></div>
+
+      <!-- Painel de situação financeira -->
+      <div id="pay-breakdown" style="background:var(--dark3);border:1px solid var(--border2);border-radius:10px;padding:14px;margin-bottom:16px;display:none">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:10px;font-weight:600">💼 Situação do Contrato</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px" id="pay-breakdown-grid"></div>
+      </div>
+
+      <div class="form-grid" style="grid-template-columns:1fr">
+        <div class="form-group">
+          <label>Valor que o cliente vai pagar agora (MZN) *</label>
+          <input id="pay-val" type="number" min="0" placeholder="0" oninput="updatePayPreview()" style="font-size:15px;padding:12px 14px">
+        </div>
+
+        <!-- Análise inteligente do pagamento -->
+        <div id="pay-analysis" style="display:none;background:var(--dark3);border:1px solid var(--border2);border-radius:10px;padding:16px">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:12px;font-weight:600">🏦 Análise Bancária do Pagamento</div>
+          <div id="pay-analysis-body"></div>
+        </div>
+
+        <!-- Aviso pagamento parcial -->
+        <div id="pay-partial-alert" style="display:none;background:rgba(240,160,48,0.1);border:1px solid rgba(240,160,48,0.3);border-radius:8px;padding:12px">
+          <div style="font-size:12px;font-weight:600;color:var(--amber);margin-bottom:6px">⚠️ Pagamento Parcial Detectado</div>
+          <div id="pay-partial-text" style="font-size:12px;color:var(--text-dim);line-height:1.6"></div>
+          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+            <button id="btn-juros-only" class="btn btn-amber btn-sm" onclick="applyJurosOnly()" style="display:none">
+              💰 Aplicar só ao Juro (renovar capital)
+            </button>
+            <button id="btn-abate-cap" class="btn btn-blue btn-sm" onclick="applyAbateCap()" style="display:none">
+              📉 Abater no Capital (recalcular)
+            </button>
+          </div>
+        </div>
+
+        <div id="pay-prev" class="prev-box" style="display:none"></div>
+
+        <div class="form-group">
+          <label>Data do Pagamento</label>
+          <input id="pay-date" type="date">
+        </div>
+        <div class="form-group">
+          <label>Notas do Pagamento</label>
+          <input id="pay-note" placeholder="Referência, método, observações…">
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <div id="pay-quick" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-outline" onclick="closePayModal()">Cancelar</button>
+        <button id="btn-confirm-pay" class="btn btn-green" onclick="savePay()">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Confirmar Pagamento
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ MODAL IPTV ══════════════ -->
+<div class="modal-ov" id="ov-iptv" onclick="if(event.target===this)closeIPTVModal()">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div>
+        <div class="modal-title" id="iptv-modal-title">Nova Subscrição IPTV</div>
+        <div class="modal-sub">Dados do cliente e serviço</div>
+      </div>
+      <button class="modal-close" onclick="closeIPTVModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group full"><label>Nome do Cliente *</label><input id="if-cli" placeholder="Nome completo" autocomplete="off"></div>
+        <div class="form-group"><label>ID do Serviço</label><input id="if-id" placeholder="ID IPTV"></div>
+        <div class="form-group"><label>Valor Mensal (MZN)</label><input id="if-val" type="number" placeholder="350"></div>
+        <div class="form-group"><label>Data de Expiração *</label><input id="if-exp" type="date"></div>
+        <div class="form-group"><label>Validade (dias)</label><input id="if-vld" type="number" placeholder="31"></div>
+        <div class="form-group"><label>Renovado</label><select id="if-ren"><option>Sim</option><option>Não</option></select></div>
+        <div class="form-group full"><label>Notas</label><input id="if-not" placeholder="Observações…"></div>
+      </div>
+    </div>
+    <div class="modal-foot" style="justify-content:flex-end">
+      <button class="btn btn-outline" onclick="closeIPTVModal()">Cancelar</button>
+      <button class="btn btn-green" onclick="saveIPTV()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+        Guardar
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ MODAL NETFLIX ══════════════ -->
+<div class="modal-ov" id="ov-nf" onclick="if(event.target===this)closeNFModal()">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div>
+        <div class="modal-title" id="nf-modal-title">Nova Subscrição Netflix</div>
+        <div class="modal-sub">Dados do cliente e plano</div>
+      </div>
+      <button class="modal-close" onclick="closeNFModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group full"><label>Nome do Cliente *</label><input id="nf-cli" placeholder="Nome completo" autocomplete="off"></div>
+        <div class="form-group"><label>Código *</label><input id="nf-cod" placeholder="Código"></div>
+        <div class="form-group"><label>Valor (MZN)</label><input id="nf-val" type="number" placeholder="200"></div>
+        <div class="form-group"><label>Data Pagamento *</label><input id="nf-dp" type="date"></div>
+        <div class="form-group"><label>Validade (dias)</label><input id="nf-vld" type="number" placeholder="30"></div>
+        <div class="form-group"><label>Estado</label><select id="nf-est"><option>ACTIVO</option><option>EXPIRADO</option><option>SUSPENSO</option></select></div>
+        <div class="form-group"><label>Plano</label><select id="nf-pln"><option>1 Tela</option><option>2 Telas</option><option>4 Telas</option></select></div>
+        <div class="form-group"><label>Pagamento</label><select id="nf-pgt"><option>PAGO</option><option>PENDENTE</option></select></div>
+        <div class="form-group full"><label>Notas</label><input id="nf-not" placeholder="Observações…"></div>
+      </div>
+    </div>
+    <div class="modal-foot" style="justify-content:flex-end">
+      <button class="btn btn-outline" onclick="closeNFModal()">Cancelar</button>
+      <button class="btn btn-red" onclick="saveNF()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+        Guardar
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ DELETE MODAL ══════════════ -->
+<div class="del-modal-ov" id="del-ov">
+  <div class="del-modal">
+    <h3>⚠️ Confirmar Eliminação</h3>
+    <p>Tem a certeza que deseja eliminar este registo? Esta acção não pode ser desfeita.</p>
+    <div class="del-actions">
+      <button class="btn btn-outline" onclick="closeDelModal()">Cancelar</button>
+      <button class="btn btn-red" onclick="confirmDel()">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<!-- DRAWER -->
+<div class="drawer-ov" id="dov" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drh">
+    <div id="dr-title" style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold-light)">Detalhe</div>
+    <button class="modal-close" onclick="closeDrawer()">×</button>
+  </div>
+  <div class="drb" id="dr-body"></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span id="t-ico">✓</span><span id="t-msg"></span></div>
+
+<script>
+// ════════════════════════════════════════
+// CORE HELPERS
+// ════════════════════════════════════════
+const TODAY = (() => { const d=new Date(); d.setHours(0,0,0,0); return d; })();
+const AVC   = ['av-0','av-1','av-2','av-3','av-4','av-5','av-6','av-7'];
+const fmt   = (n,d=0) => Number(n||0).toLocaleString('pt-MZ',{minimumFractionDigits:d,maximumFractionDigits:d});
+const fD    = s => { if(!s) return '—'; const d=new Date(s+'T00:00:00'); return isNaN(d)?'—':d.toLocaleDateString('pt-MZ',{day:'2-digit',month:'2-digit',year:'numeric'}); };
+const diff  = s => { if(!s) return 999; const d=new Date(s+'T00:00:00'); return isNaN(d)?999:Math.floor((d-TODAY)/86400000); };
+const ini   = n => n?(n.trim().split(' ').map(w=>w[0]).filter(Boolean).slice(0,2).join('').toUpperCase()):'?';
+const avc   = n => AVC[(n||'?').charCodeAt(0)%AVC.length];
+const maxId = a => a.length?Math.max(...a.map(x=>x.id||0))+1:1;
+const uid   = () => Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+const av    = n => `<div class="av ${avc(n)}">${ini(n)}</div>`;
+const today = () => new Date().toISOString().split('T')[0];
+
+// ════════════════════════════════════════
+// COMPUTED
+// ════════════════════════════════════════
+function cSt(r) {
+  if(r.status&&r.status!=='auto') return r.status;
+  const aR=cAR(r);
+  if(r.pago&&r.pago>=aR) return '✅ LIQUIDADO';
+  const d=diff(r.dVenc);
+  if(d<-30) return '🔴 MUITO ATRASADO';
+  if(d<0)   return '🔴 ATRASADO';
+  if(d<=7)  return '⚠️ VENCE EM BREVE';
+  return '🟢 EM DIA';
+}
+// ════════════════════════════════════════
+// ADVANCED BANKING ENGINE
+// ════════════════════════════════════════
+
+// Calculate total receivable based on method (no mora)
+function calcTotal(capital, juros, metodo, prestacoes) {
+  metodo = metodo || 'simples';
+  prestacoes = prestacoes || 1;
+  const n = prestacoes;
+  if (metodo === 'composto') {
+    return capital * Math.pow(1 + juros, n);
+  } else if (metodo === 'decrescente') {
+    // Price method: equal installment (French amortization)
+    if (juros === 0) return capital;
+    const pmt = capital * juros / (1 - Math.pow(1 + juros, -n));
+    return pmt * n;
+  } else {
+    // simples / flat
+    return capital * (1 + juros * n);
+  }
+}
+
+// PMT - monthly installment
+function calcPMT(capital, juros, metodo, prestacoes) {
+  metodo = metodo || 'simples';
+  prestacoes = prestacoes || 1;
+  const total = calcTotal(capital, juros, metodo, prestacoes);
+  return total / prestacoes;
+}
+
+// TAE (Taxa Anual Efectiva) from monthly rate
+function calcTAE(juroMensal) {
+  return (Math.pow(1 + juroMensal, 12) - 1) * 100;
+}
+
+// Build full amortization schedule
+function buildAmortizacao(capital, juros, metodo, prestacoes, dataInicio) {
+  metodo = metodo || 'simples';
+  prestacoes = prestacoes || 1;
+  const schedule = [];
+  let saldoRestante = capital;
+  const pmt = calcPMT(capital, juros, metodo, prestacoes);
+  let dataBase = dataInicio ? new Date(dataInicio + 'T00:00:00') : new Date();
+  
+  for (let i = 1; i <= prestacoes; i++) {
+    const dataVenc = new Date(dataBase);
+    dataVenc.setMonth(dataVenc.getMonth() + i);
+    let juroMes, amort;
+    if (metodo === 'decrescente') {
+      juroMes = saldoRestante * juros;
+      amort = pmt - juroMes;
+    } else if (metodo === 'composto') {
+      juroMes = saldoRestante * juros;
+      amort = pmt - juroMes;
+    } else {
+      juroMes = capital * juros;
+      amort = capital / prestacoes;
+    }
+    saldoRestante = Math.max(0, saldoRestante - amort);
+    schedule.push({
+      num: i,
+      data: dataVenc.toISOString().split('T')[0],
+      prestacao: pmt,
+      juro: juroMes,
+      amort: amort,
+      saldo: saldoRestante,
+    });
+  }
+  return schedule;
+}
+
+// Calculate days in arrears interest (juros de mora bancários: 2%/mês simples sobre saldo em dívida)
+function calcJurosMoraAtual(r) {
+  const da = cDA(r);
+  if (da <= 0) return 0;
+  const saldo = Math.max(0, cAR(r) - (r.pago || 0));
+  // 2% ao mês simples = 0.0667% ao dia
+  const taxaDiaria = 0.02 / 30;
+  return saldo * taxaDiaria * da;
+}
+
+const cAR  = r => {
+  const metodo = r.metodo || 'simples';
+  const prest  = r.prestacoes || 1;
+  return calcTotal(r.capital || 0, r.juros || 0, metodo, prest);
+};
+const cDA  = r => { const d=diff(r.dVenc); return d<0?Math.abs(d):0; };
+const iDR  = r => diff(r.expira);
+const iEst = r => iDR(r)<0?'Vencido':'Ativo';
+const nDR  = r => diff(r.expira);
+
+// ════════════════════════════════════════
+// DATABASE
+// ════════════════════════════════════════
+const KEY='mbc_gold_v1';
+let DB={cred:[],iptv:[],nf:[]};
+
+function loadDB(){
+  try { const r=localStorage.getItem(KEY); DB=r?JSON.parse(r):seed(); }
+  catch(e){ DB=seed(); }
+  if(!DB.cred) DB.cred=[]; if(!DB.iptv) DB.iptv=[]; if(!DB.nf) DB.nf=[];
+}
+function saveDB(){
+  localStorage.setItem(KEY,JSON.stringify(DB));
+}
+function seed(){
+  return {
+    cred:[
+      {id:1,devedor:'Saquina',capital:10000,juros:.3,metodo:'simples',prestacoes:1,mora:0,pago:null,status:'auto',dEmprest:'2026-03-09',dVenc:'2026-04-09',dpgto:'',notas:'',historico:[],capitalOriginal:10000,jurosOriginais:.3},
+      {id:2,devedor:'Saquina',capital:10000,juros:.3,metodo:'simples',prestacoes:1,mora:0,pago:null,status:'auto',dEmprest:'2026-04-07',dVenc:'2026-04-07',dpgto:'',notas:'Segundo empréstimo',historico:[],capitalOriginal:10000,jurosOriginais:.3},
+      {id:3,devedor:'Saquina',capital:5000,juros:.3,metodo:'simples',prestacoes:1,mora:0,pago:6500,status:'auto',dEmprest:'2026-02-28',dVenc:'2026-03-28',dpgto:'2026-03-19',notas:'Liquidado antecipadamente',historico:[{data:'2026-03-19',valor:6500,modo:'normal',nota:'Liquidação total'}],capitalOriginal:5000,jurosOriginais:.3},
+      {id:4,devedor:'Francisco Gabriel',capital:15000,juros:.2,metodo:'composto',prestacoes:3,mora:0,pago:null,status:'auto',dEmprest:'2026-02-28',dVenc:'2026-05-28',dpgto:'',notas:'',historico:[],capitalOriginal:15000,jurosOriginais:.2},
+      {id:5,devedor:'Saquina',capital:5000,juros:.3,metodo:'simples',prestacoes:1,mora:0,pago:null,status:'auto',dEmprest:'2026-03-10',dVenc:'2026-04-10',dpgto:'',notas:'',historico:[],capitalOriginal:5000,jurosOriginais:.3},
+      {id:6,devedor:'Saquina',capital:20000,juros:.3,metodo:'simples',prestacoes:1,mora:0,pago:null,status:'auto',dEmprest:'2026-03-05',dVenc:'2026-04-05',dpgto:'',notas:'',historico:[],capitalOriginal:20000,jurosOriginais:.3},
+      {id:7,devedor:'Lázaro',capital:10000,juros:.3,metodo:'decrescente',prestacoes:6,mora:0,pago:null,status:'auto',dEmprest:'2025-10-21',dVenc:'2026-04-21',dpgto:'',notas:'Reincidente — plano de 6 prestações',historico:[],capitalOriginal:10000,jurosOriginais:.3},
+      {id:8,devedor:'Lázaro',capital:10000,juros:.2,metodo:'simples',prestacoes:1,mora:0,pago:null,status:'auto',dEmprest:'2025-10-21',dVenc:'2025-11-21',dpgto:'',notas:'',historico:[],capitalOriginal:10000,jurosOriginais:.2},
+    ],
+    iptv:[
+      {id:1,cliente:'Ayob Mia',idServ:'4308896711',expira:'2026-03-16',valid:31,renovado:'Sim',valor:350,notas:''},
+      {id:2,cliente:'Abdul',idServ:'16072403',expira:'2026-05-20',valid:31,renovado:'Sim',valor:350,notas:''},
+      {id:3,cliente:'Mauro Manhica',idServ:'14936009',expira:'2026-04-11',valid:31,renovado:'Sim',valor:350,notas:''},
+      {id:4,cliente:'Gege',idServ:'12350604',expira:'2026-04-10',valid:30,renovado:'Sim',valor:350,notas:''},
+      {id:5,cliente:'Cassamo Suleimane',idServ:'6479811261',expira:'2026-04-13',valid:31,renovado:'Sim',valor:350,notas:''},
+      {id:6,cliente:'Jaime Celestino',idServ:'787375865671',expira:'2026-03-25',valid:31,renovado:'Sim',valor:350,notas:''},
+      {id:7,cliente:'Leonel',idServ:'15110140',expira:'2026-04-18',valid:61,renovado:'Sim',valor:350,notas:''},
+    ],
+    nf:[
+      {id:1,cliente:'Guido',cod:'1977',dpago:'2026-03-03',valid:30,expira:'2026-04-02',estado:'ACTIVO',valor:200,plano:'1 Tela',pgto:'PAGO',notas:''},
+      {id:2,cliente:'Jorge Jardim',cod:'1984',dpago:'2026-02-15',valid:90,expira:'2026-05-16',estado:'ACTIVO',valor:500,plano:'1 Tela',pgto:'PAGO',notas:''},
+      {id:3,cliente:'Goncalves B.',cod:'1507',dpago:'2026-02-16',valid:60,expira:'2026-04-17',estado:'ACTIVO',valor:400,plano:'1 Tela',pgto:'PAGO',notas:''},
+      {id:4,cliente:'Abu',cod:'3066',dpago:'2026-03-16',valid:30,expira:'2026-04-15',estado:'ACTIVO',valor:200,plano:'1 Tela',pgto:'PAGO',notas:''},
+      {id:5,cliente:'Oitavo',cod:'411',dpago:'2026-02-28',valid:30,expira:'2026-03-30',estado:'ACTIVO',valor:200,plano:'1 Tela',pgto:'PAGO',notas:''},
+      {id:6,cliente:'Violante Ching',cod:'3534',dpago:'2026-03-19',valid:90,expira:'2026-06-17',estado:'ACTIVO',valor:200,plano:'1 Tela',pgto:'PAGO',notas:''},
+      {id:7,cliente:'Walter',cod:'2816',dpago:'2026-03-14',valid:30,expira:'2026-04-13',estado:'ACTIVO',valor:200,plano:'1 Tela',pgto:'PAGO',notas:''},
+      {id:8,cliente:'Mauro',cod:'0007',dpago:'2026-02-20',valid:90,expira:'2026-05-21',estado:'ACTIVO',valor:600,plano:'1 Tela',pgto:'PAGO',notas:''},
+      {id:9,cliente:'MR-BYPASSER',cod:'2010',dpago:'2025-12-31',valid:365,expira:'2026-12-31',estado:'ACTIVO',valor:0,plano:'1 Tela',pgto:'PAGO',notas:'Conta própria'},
+      {id:10,cliente:'Obama',cod:'3333',dpago:'2026-02-21',valid:30,expira:'2026-03-23',estado:'ACTIVO',valor:200,plano:'1 Tela',pgto:'PAGO',notas:''},
+      {id:11,cliente:'Silvana',cod:'8080',dpago:'2026-03-20',valid:60,expira:'2026-05-19',estado:'ACTIVO',valor:400,plano:'1 Tela',pgto:'PAGO',notas:''},
+      {id:12,cliente:'Alzan',cod:'4829',dpago:'2026-02-20',valid:30,expira:'2026-03-22',estado:'ACTIVO',valor:200,plano:'1 Tela',pgto:'PAGO',notas:''},
+      {id:13,cliente:'Irene Carlos',cod:'9808',dpago:'2026-03-15',valid:30,expira:'2026-04-14',estado:'ACTIVO',valor:200,plano:'1 Tela',pgto:'PAGO',notas:''},
+      {id:14,cliente:'Flores',cod:'3020',dpago:'2026-03-12',valid:30,expira:'2026-04-11',estado:'ACTIVO',valor:200,plano:'1 Tela',pgto:'PAGO',notas:''},
+      {id:15,cliente:'Zany',cod:'1995',dpago:'2026-03-19',valid:30,expira:'2026-04-18',estado:'ACTIVO',valor:200,plano:'1 Tela',pgto:'PAGO',notas:''},
+    ]
+  };
+}
+
+// ════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════
+let curPage='dash';
+function nav(p, btn){
+  curPage=p;
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+p).classList.add('active');
+  btn.classList.add('active');
+  if(p==='dash') renderDash();
+  if(p==='cred') renderCred();
+  if(p==='iptv') { applyI(); }
+  if(p==='nf')   { applyN(); }
+  if(p==='rel')  { renderRel(); }
+}
+
+// ════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════
+let tT;
+function toast(ico,msg){ document.getElementById('t-ico').textContent=ico; document.getElementById('t-msg').textContent=msg; const el=document.getElementById('toast'); el.classList.add('show'); if(tT)clearTimeout(tT); tT=setTimeout(()=>el.classList.remove('show'),3200); }
+
+// ════════════════════════════════════════
+// CLOCK
+// ════════════════════════════════════════
+function tick(){ document.getElementById('clock').textContent=new Date().toLocaleTimeString('pt-MZ',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); }
+setInterval(tick,1000); tick();
+setInterval(renderDash,60000);
+
+// ════════════════════════════════════════
+// KPI BUILDER
+// ════════════════════════════════════════
+function kpi(cls,ico,label,val,sub){
+  return `<div class="kpi-card ${cls}"><div class="kpi-ico">${ico}</div><div class="kpi-label">${label}</div><div class="kpi-value">${val}</div><div class="kpi-sub">${sub}</div></div>`;
+}
+
+// ════════════════════════════════════════
+// RENDER DASHBOARD
+// ════════════════════════════════════════
+function renderDash(){
+  const C=DB.cred.map(r=>({...r,_st:cSt(r),_aR:cAR(r),_da:cDA(r)}));
+  const I=DB.iptv.map(r=>({...r,_est:iEst(r),_dr:iDR(r)}));
+  const N=DB.nf.map(r=>({...r,_dr:nDR(r)}));
+  const capT=C.reduce((a,r)=>a+(r.capital||0),0), recT=C.reduce((a,r)=>a+r._aR,0);
+  const pagT=C.reduce((a,r)=>a+(r.pago||0),0);
+  const moraT=C.reduce((a,r)=>a+calcJurosMoraAtual(r),0);
+  const iRec=I.filter(r=>r._est==='Ativo').reduce((a,r)=>a+(r.valor||0),0);
+  const nRec=N.filter(r=>r.pgto==='PAGO').reduce((a,r)=>a+(r.valor||0),0);
+  const atrN=C.filter(r=>r._st.includes('ATRASADO')).length;
+  const recP=recT>0?pagT/recT*100:0;
+  document.getElementById('kpi-dash').innerHTML=
+    kpi('gold','💰','Capital em Risco',fmt(capT)+' MZN',DB.cred.length+' contratos')+
+    kpi('green','📡','Receita Mensal',fmt(iRec+nRec)+' MZN','IPTV + Netflix')+
+    kpi('blue','📈','Total a Receber',fmt(recT)+' MZN','c/ juros e mora')+
+    kpi('amber','⚡','Juros Acumulado',fmt(moraT)+' MZN','juros acumulados')+
+    kpi('red','🚨','Em Atraso',atrN,'de '+DB.cred.length+' contratos')+
+    kpi('purple','📊','Recuperação',fmt(recP,1)+'%','crédito cobrado');
+
+  // cred summary
+  const liq=C.filter(r=>r._st==='✅ LIQUIDADO').length;
+  document.getElementById('dash-cred-body').innerHTML=mkSummRows([
+    ['Capital Total',fmt(capT)+' MZN','gold'],['A Receber',fmt(recT)+' MZN',''],
+    ['Juros Acumulado',fmt(moraT)+' MZN','amber'],['Em Atraso',atrN+' contratos','red'],
+    ['Liquidados',liq+' contratos','green'],['Recuperação',fmt(recP,1)+'%','purple'],
+  ]);
+  // iptv summary
+  const iA=I.filter(r=>r._est==='Ativo').length, iV=I.length-iA;
+  document.getElementById('dash-iptv-body').innerHTML=mkSummRows([
+    ['Clientes',DB.iptv.length,''],['Activos',iA,'green'],['Vencidos',iV,'red'],
+    ['Receita Activa',fmt(iRec)+' MZN','green'],
+    ['Netflix Activos',N.filter(r=>r._dr>=0).length,'blue'],
+    ['Receita Netflix',fmt(nRec)+' MZN','blue'],
+  ]);
+  // alerts
+  const alerts=[];
+  C.forEach(r=>{ if(r._st.includes('ATRASADO')) alerts.push({sev:'urgent',ico:'🔴',mod:'CRÉDITO',txt:`${r.devedor} — ${r._da} dias atraso · A cobrar: ${fmt(r._aR)} MZN`}); else if(r._st.includes('VENCE')) alerts.push({sev:'warning',ico:'⚠️',mod:'CRÉDITO',txt:`${r.devedor} — Vence em ${diff(r.dVenc)} dias · ${fmt(r._aR)} MZN`}); });
+  I.forEach(r=>{ const d=r._dr; if(d<0) alerts.push({sev:'urgent',ico:'🔴',mod:'IPTV',txt:`${r.cliente} expirou há ${Math.abs(d)} dias · ${fmt(r.valor)} MZN`}); else if(d<=5) alerts.push({sev:'warning',ico:'⚠️',mod:'IPTV',txt:`${r.cliente} expira em ${d} dias`}); });
+  N.forEach(r=>{ const d=r._dr; if(d<0) alerts.push({sev:'urgent',ico:'🔴',mod:'NETFLIX',txt:`${r.cliente} expirou há ${Math.abs(d)} dias · ${fmt(r.valor)} MZN`}); else if(d<=7) alerts.push({sev:'warning',ico:'⚠️',mod:'NETFLIX',txt:`${r.cliente} vence em ${d} dias`}); });
+  const aEl=document.getElementById('dash-alerts-body');
+  aEl.innerHTML=alerts.length?alerts.map(a=>`<div class="due-strip ${a.sev}" style="margin-bottom:6px"><div class="due-strip-ico">${a.ico}</div><div class="due-strip-body"><div class="due-strip-title">${a.txt}</div><div class="due-strip-sub">${a.mod}</div></div></div>`).join(''):`<div class="empty" style="padding:24px"><div class="empty-ico">✅</div><p>Sem alertas críticos</p></div>`;
+  document.getElementById('dash-alerts-panel').style.display='block';
+  // nav badges
+  document.getElementById('nb-cred').textContent=DB.cred.length;
+  document.getElementById('nb-iptv').textContent=DB.iptv.length;
+  document.getElementById('nb-nf').textContent=DB.nf.length;
+  document.getElementById('dash-date').textContent=`Actualizado: ${new Date().toLocaleString('pt-MZ',{day:'2-digit',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'})}`;
+}
+function mkSummRows(rows){
+  const cols={gold:'var(--gold)',green:'var(--green)',red:'var(--red)',blue:'var(--blue)',purple:'var(--purple)',amber:'var(--amber)'};
+  return rows.map(([l,v,c])=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)"><span style="font-size:12px;color:var(--text-dim)">${l}</span><span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:${cols[c]||'var(--text)'}">${v}</span></div>`).join('');
+}
+
+// ════════════════════════════════════════
+// INLINE CREDIT FORM (matches screenshot)
+// ════════════════════════════════════════
+let _inlineFormVisible = true;
+function toggleInlineForm(){
+  _inlineFormVisible = !_inlineFormVisible;
+  document.getElementById('inline-form-body').style.display = _inlineFormVisible ? '' : 'none';
+  document.getElementById('inline-toggle-ico').textContent = _inlineFormVisible ? '▲ Recolher' : '▼ Expandir';
+}
+function scrollToInlineForm(){
+  const panel = document.getElementById('inline-cred-panel');
+  if(panel){ panel.scrollIntoView({behavior:'smooth',block:'start'}); }
+  if(!_inlineFormVisible) toggleInlineForm();
+  setTimeout(()=>document.getElementById('icf-dev').focus(), 400);
+}
+function icfSetToday(){
+  const t = today();
+  document.getElementById('icf-de').value = t;
+}
+function icprev(){
+  const cap = +document.getElementById('icf-cap').value || 0;
+  const jurPct = +document.getElementById('icf-jur').value || 0;
+  const jur = jurPct / 100;
+  const metodo = document.getElementById('icf-metodo')?.value || 'simples';
+  const prest = +document.getElementById('icf-prest')?.value || 1;
+  const total = calcTotal(cap, jur, metodo, prest);
+  const pmt = prest > 1 ? calcPMT(cap, jur, metodo, prest) : null;
+  document.getElementById('icf-total').value = cap > 0 ? fmt(total) + ' MZN' : '';
+  const metodoLabel = {'simples':'Simples','composto':'Composto','decrescente':'Saldo Devedor'}[metodo] || metodo;
+  document.getElementById('icf-prev').innerHTML = cap > 0 ?
+    `Capital: <b style="color:var(--gold)">${fmt(cap)}</b> · Juro ${jurPct}%/${metodoLabel}: <b style="color:var(--amber)">${fmt(total-cap)}</b> · Total: <b style="color:var(--text)">${fmt(total)}</b> MZN${pmt?` · Prestação: <b style="color:var(--blue)">${fmt(pmt)} MZN×${prest}</b>`:''}` : '';
+}
+function icfClear(){
+  ['icf-dev','icf-contact','icf-prod','icf-gar','icf-dv'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('icf-cap').value='';
+  document.getElementById('icf-jur').value='30';
+  document.getElementById('icf-prest').value='1';
+  document.getElementById('icf-metodo').value='simples';
+  document.getElementById('icf-total').value='';
+  document.getElementById('icf-prev').innerHTML='';
+  icfSetToday();
+}
+function saveInlineCred(){
+  const dev = document.getElementById('icf-dev').value.trim();
+  const cap = +document.getElementById('icf-cap').value;
+  const jurPct = +document.getElementById('icf-jur').value || 30;
+  const metodo = document.getElementById('icf-metodo')?.value || 'simples';
+  const prest = +document.getElementById('icf-prest')?.value || 1;
+  const dv = document.getElementById('icf-dv').value;
+  const de = document.getElementById('icf-de').value || today();
+  if(!dev){ toast('⚠','Nome do cliente obrigatório'); return; }
+  if(!cap||cap<=0){ toast('⚠','Valor do crédito inválido'); return; }
+  if(!dv){ toast('⚠','Data de vencimento obrigatória'); return; }
+  const total = calcTotal(cap, jurPct/100, metodo, prest);
+  const rec = {
+    id: maxId(DB.cred),
+    devedor: dev,
+    capital: cap,
+    juros: jurPct/100,
+    metodo: metodo,
+    prestacoes: prest,
+    mora: 0,
+    pago: null,
+    status: 'auto',
+    dEmprest: de,
+    dVenc: dv,
+    dpgto: '',
+    notas: [
+      document.getElementById('icf-contact').value.trim() ? 'Contacto: '+document.getElementById('icf-contact').value.trim() : '',
+      document.getElementById('icf-prod').value.trim() ? 'Produto: '+document.getElementById('icf-prod').value.trim() : '',
+      document.getElementById('icf-gar').value.trim() ? 'Garantia: '+document.getElementById('icf-gar').value.trim() : '',
+      document.getElementById('icf-tipo').value !== 'Dinheiro' ? 'Tipo: '+document.getElementById('icf-tipo').value : ''
+    ].filter(Boolean).join(' | '),
+    historico: [],
+    capitalOriginal: cap,
+    jurosOriginais: jurPct/100,
+    schedule: buildAmortizacao(cap, jurPct/100, metodo, prest, de),
+  };
+  DB.cred.push(rec);
+  saveDB(); renderCred(); renderDash();
+  toast('✅', `Crédito de ${dev} registado — Total: ${fmt(total)} MZN`);
+  icfClear();
+}
+
+// ════════════════════════════════════════
+// CREDIT MODAL (EDIT ONLY)
+// ════════════════════════════════════════
+let EI_cred=null;
+function openCredModal(idx){
+  EI_cred=idx!==undefined?idx:null;
+  const r=idx!==undefined?DB.cred[idx]:null;
+  document.getElementById('cred-modal-title').textContent=r?`Editar — ${r.devedor}`:'Novo Empréstimo';
+  document.getElementById('cf-dev').value=r?.devedor||'';
+  document.getElementById('cf-cap').value=r?.capital||'';
+  document.getElementById('cf-jur').value=r ? Math.round((r.juros||0.3)*100) : 30;
+  document.getElementById('cf-metodo').value=r?.metodo||'simples';
+  document.getElementById('cf-prestacoes').value=r?.prestacoes||1;
+  document.getElementById('cf-pag').value=r?.pago||'';
+  document.getElementById('cf-st').value=r?.status||'auto';
+  document.getElementById('cf-de').value=r?.dEmprest||today();
+  document.getElementById('cf-dv').value=r?.dVenc||'';
+  document.getElementById('cf-dp').value=r?.dpgto||'';
+  document.getElementById('cf-not').value=r?.notas||'';
+  cprev();
+  document.getElementById('ov-cred').classList.add('open');
+  setTimeout(()=>document.getElementById('cf-dev').focus(),80);
+}
+function closeCredModal(){ document.getElementById('ov-cred').classList.remove('open'); EI_cred=null; }
+function cprev(){
+  const cap=+document.getElementById('cf-cap').value||0;
+  const jurPctM=+document.getElementById('cf-jur').value||0;
+  const jur=jurPctM/100;
+  const metodo=document.getElementById('cf-metodo')?.value||'simples';
+  const prest=+document.getElementById('cf-prestacoes')?.value||1;
+  const aR=calcTotal(cap, jur, metodo, prest);
+  const juroTotal=aR-cap;
+  const pmt=calcPMT(cap,jur,metodo,prest);
+  const box=document.getElementById('cprev-box');
+  if(!cap){ box.style.display='none'; return; }
+  box.style.display='flex';
+  box.innerHTML=`
+    <div class="prev-item"><div class="prev-lbl">Capital</div><div class="prev-val" style="color:var(--gold)">${fmt(cap)} MZN</div></div>
+    <div class="prev-item"><div class="prev-lbl">Juros Total</div><div class="prev-val" style="color:var(--amber)">${fmt(juroTotal)} MZN</div></div>
+    <div class="prev-item"><div class="prev-lbl">Total</div><div class="prev-val" style="color:var(--text)">${fmt(aR)} MZN</div></div>
+    ${prest>1?`<div class="prev-item"><div class="prev-lbl">Prestação × ${prest}</div><div class="prev-val" style="color:var(--blue)">${fmt(pmt)} MZN</div></div>`:''}`;
+}
+function saveCred(){
+  const dev=document.getElementById('cf-dev').value.trim(), cap=+document.getElementById('cf-cap').value, dv=document.getElementById('cf-dv').value, de=document.getElementById('cf-de').value;
+  if(!dev){toast('⚠','Nome do devedor obrigatório');return;} if(!cap||cap<=0){toast('⚠','Capital inválido');return;} if(!dv){toast('⚠','Data de vencimento obrigatória');return;}
+  const metodo=document.getElementById('cf-metodo')?.value||'simples';
+  const prest=+document.getElementById('cf-prestacoes')?.value||1;
+  const juros=(+document.getElementById('cf-jur').value||30)/100;
+  const isN=EI_cred===null;
+  const existing=EI_cred!==null?DB.cred[EI_cred]:{};
+  const rec={
+    id:isN?maxId(DB.cred):DB.cred[EI_cred].id,
+    devedor:dev,capital:cap,juros,metodo,prestacoes:prest,
+    mora:0,
+    pago:+document.getElementById('cf-pag').value||null,
+    status:document.getElementById('cf-st').value,
+    dEmprest:de,dVenc:dv,dpgto:document.getElementById('cf-dp').value,
+    notas:document.getElementById('cf-not').value.trim(),
+    historico:existing.historico||[],
+    capitalOriginal:existing.capitalOriginal||cap,
+    jurosOriginais:existing.jurosOriginais||juros,
+    schedule:buildAmortizacao(cap,juros,metodo,prest,de),
+  };
+  isN?DB.cred.push(rec):DB.cred[EI_cred]=rec;
+  saveDB(); closeCredModal(); renderCred(); renderDash(); toast('✅',isN?`Crédito de ${dev} registado`:`${dev} actualizado`);
+}
+
+// ════════════════════════════════════════
+// PAYMENT MODAL — SISTEMA BANCÁRIO
+// ════════════════════════════════════════
+let PAY_IDX=null;
+let _payMode = 'normal';
+
+function openPayModal(idx,mode){
+  PAY_IDX=idx;
+  _payMode='normal';
+  const r=DB.cred[idx];
+  const aR=cAR(r), pago=r.pago||0, saldo=Math.max(0,aR-pago);
+  const da=cDA(r), dd=diff(r.dVenc);
+  const juroTotal = aR - (r.capital||0);
+  const juroMora = calcJurosMoraAtual(r);
+  const metodo = r.metodo || 'simples';
+  const prest = r.prestacoes || 1;
+  const pmt = calcPMT(r.capital||0, r.juros||0, metodo, prest);
+  document.getElementById('pay-title').textContent = `Pagamento — ${r.devedor}`;
+  document.getElementById('pay-sub').textContent=`Capital: ${fmt(r.capital)} MZN · Juro ${((r.juros||0)*100).toFixed(0)}% (${metodo}) · Total: ${fmt(aR)} MZN`;
+
+  let dueHtml='';
+  if(da>0) dueHtml=`<div class="due-strip urgent"><div class="due-strip-ico">🔴</div><div class="due-strip-body"><div class="due-strip-title">ATRASO DE ${da} DIAS${juroMora>0?' · Mora automática aplicada':''}</div><div class="due-strip-sub">Venceu em ${fD(r.dVenc)} · Saldo contratual: ${fmt(saldo)} MZN${juroMora>0?` · Juros mora: <b style="color:var(--red)">${fmt(juroMora)} MZN</b>`:''}</div></div><div class="due-strip-days">${da}<small>dias</small></div></div>`;
+  else if(dd<=7) dueHtml=`<div class="due-strip warning"><div class="due-strip-ico">⚠️</div><div class="due-strip-body"><div class="due-strip-title">VENCE EM ${dd} DIAS</div><div class="due-strip-sub">Vencimento: ${fD(r.dVenc)}</div></div><div class="due-strip-days">${dd}<small>dias</small></div></div>`;
+  else dueHtml=`<div class="due-strip ok"><div class="due-strip-ico">📋</div><div class="due-strip-body"><div class="due-strip-title">${r.devedor}</div><div class="due-strip-sub">Total contratado: ${fmt(aR)} MZN · Já pago: ${fmt(pago)} MZN · Saldo: ${fmt(saldo)} MZN</div></div></div>`;
+  document.getElementById('pay-due-info').innerHTML=dueHtml;
+
+  // Breakdown grid — agora com mora automática
+  const saldoComMora = saldo + juroMora;
+  const bdg = document.getElementById('pay-breakdown-grid');
+  bdg.innerHTML = [
+    ['Capital Original', fmt(r.capitalOriginal||r.capital)+' MZN', 'var(--gold)'],
+    ['Juros '+((r.juros||0)*100).toFixed(0)+'% ('+metodo+')', fmt(juroTotal)+' MZN', 'var(--amber)'],
+    ['Já Pago', fmt(pago)+' MZN', 'var(--green)'],
+    ['Saldo Contratual', fmt(saldo)+' MZN', saldo>0?'var(--red)':'var(--green)'],
+    ...(juroMora>0?[['Mora ('+da+'d × 2%/mês)', fmt(juroMora)+' MZN', 'var(--red)']]:[]),
+    ...(juroMora>0?[['Total c/ Mora', fmt(saldoComMora)+' MZN', 'var(--red)']]:[]),
+    ...(prest>1?[['Prestação Mensal', fmt(pmt)+' MZN × '+prest, 'var(--blue)']]:[]),
+  ].map(([l,v,c])=>`<div style="background:var(--dark4);border-radius:7px;padding:10px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:4px">${l}</div><div style="font-family:'DM Mono',monospace;font-size:13px;font-weight:600;color:${c}">${v}</div></div>`).join('');
+  document.getElementById('pay-breakdown').style.display='block';
+
+  // Quick buttons
+  const saldoTotal = juroMora > 0 ? saldoComMora : saldo;
+  document.getElementById('pay-quick').innerHTML=`
+    <button class="btn btn-green btn-sm" onclick="document.getElementById('pay-val').value=${saldoTotal.toFixed(0)};updatePayPreview()">💰 Total (${fmt(saldoTotal)} MZN)</button>
+    <button class="btn btn-amber btn-sm" onclick="document.getElementById('pay-val').value=${juroTotal.toFixed(0)};updatePayPreview()">⚡ Só Juro (${fmt(juroTotal)} MZN)</button>
+    ${prest>1?`<button class="btn btn-blue btn-sm" onclick="document.getElementById('pay-val').value=${pmt.toFixed(0)};updatePayPreview()">📅 1 Prestação (${fmt(pmt)} MZN)</button>`:`<button class="btn btn-blue btn-sm" onclick="document.getElementById('pay-val').value=${(saldo/2).toFixed(0)};updatePayPreview()">50% (${fmt(saldo/2)} MZN)</button>`}`;
+
+  document.getElementById('pay-val').value=mode==='total'?saldoTotal.toFixed(0):'';
+  document.getElementById('pay-date').value=today();
+  document.getElementById('pay-note').value='';
+  updatePayPreview();
+  document.getElementById('ov-pay').classList.add('open');
+  setTimeout(()=>document.getElementById('pay-val').focus(),80);
+}
+
+function closePayModal(){ document.getElementById('ov-pay').classList.remove('open'); PAY_IDX=null; _payMode='normal'; }
+
+function updatePayPreview(){
+  if(PAY_IDX===null) return;
+  const r=DB.cred[PAY_IDX];
+  const aR=cAR(r), pagoEx=r.pago||0;
+  const juroTotal = aR - (r.capital||0);
+  const juroMora = calcJurosMoraAtual(r);
+  const saldo = Math.max(0, aR - pagoEx);
+  const saldoTotal = saldo + juroMora;
+  const valStr=document.getElementById('pay-val').value;
+
+  const partialAlert = document.getElementById('pay-partial-alert');
+  const analysis = document.getElementById('pay-analysis');
+  const prev = document.getElementById('pay-prev');
+
+  if(!valStr){ prev.style.display='none'; partialAlert.style.display='none'; analysis.style.display='none'; return; }
+
+  const val=+valStr;
+  const novoTotal=pagoEx+val;
+  const saldoN=Math.max(0,saldoTotal-val);
+  const pct=Math.min(100,novoTotal/aR*100);
+  const isLiq=val>=saldoTotal;
+  const isJurosOnly = Math.abs(val - juroTotal) < 1;
+  const isPartial = !isLiq && val > 0;
+  const pmt = calcPMT(r.capital||0, r.juros||0, r.metodo||'simples', r.prestacoes||1);
+
+  // Capital roll after juro-only payment
+  const novoCapital = r.capital;
+  const novoTotalRenovado = calcTotal(novoCapital, r.juros||0, r.metodo||'simples', r.prestacoes||1);
+
+  analysis.style.display = 'block';
+  let analysisHtml = '';
+
+  if(isLiq){
+    analysisHtml = `<div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(76,175,116,0.1);border-radius:8px;border:1px solid rgba(76,175,116,0.3)">
+      <span style="font-size:24px">✅</span>
+      <div><div style="font-size:13px;font-weight:600;color:var(--green)">LIQUIDAÇÃO TOTAL</div>
+      <div style="font-size:11px;color:var(--text-dim)">Contrato encerrado. Pagamento completo de ${fmt(val)} MZN${juroMora>0?' (incl. mora de '+fmt(juroMora)+' MZN)':''}</div></div></div>`;
+    partialAlert.style.display='none';
+  } else if(isJurosOnly){
+    analysisHtml = `<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:var(--dark4);border-radius:7px;padding:10px;border-left:3px solid var(--amber)">
+        <div style="font-size:9px;color:var(--text-dim);text-transform:uppercase">Pago agora</div>
+        <div style="font-size:13px;font-weight:700;color:var(--amber);font-family:'DM Mono',monospace">${fmt(val)} MZN</div>
+        <div style="font-size:10px;color:var(--text-dim)">= Juro contratual</div>
+      </div>
+      <div style="background:var(--dark4);border-radius:7px;padding:10px;border-left:3px solid var(--gold)">
+        <div style="font-size:9px;color:var(--text-dim);text-transform:uppercase">Capital renova</div>
+        <div style="font-size:13px;font-weight:700;color:var(--gold);font-family:'DM Mono',monospace">${fmt(novoCapital)} MZN</div>
+        <div style="font-size:10px;color:var(--text-dim)">próximo período</div>
+      </div>
+      <div style="background:var(--dark4);border-radius:7px;padding:10px;border-left:3px solid var(--red)">
+        <div style="font-size:9px;color:var(--text-dim);text-transform:uppercase">Novo total dívida</div>
+        <div style="font-size:13px;font-weight:700;color:var(--red);font-family:'DM Mono',monospace">${fmt(novoTotalRenovado)} MZN</div>
+        <div style="font-size:10px;color:var(--text-dim)">novo vencimento</div>
+      </div>
+    </div>`;
+    partialAlert.style.display='block';
+    document.getElementById('pay-partial-text').innerHTML =
+      `Cliente pagou o juro de <b style="color:var(--amber)">${fmt(val)} MZN</b>. O capital de <b style="color:var(--gold)">${fmt(novoCapital)} MZN</b> rola — escolha como processar:`;
+    document.getElementById('btn-juros-only').style.display='inline-flex';
+    document.getElementById('btn-abate-cap').style.display='none';
+  } else if(isPartial){
+    const abateNoCapital = val - juroTotal;
+    const capitalRestante = Math.max(0, r.capital - Math.max(0, abateNoCapital));
+    const novoTotalRecalc = calcTotal(capitalRestante, r.juros||0, r.metodo||'simples', r.prestacoes||1);
+    const novoJuroRecalc = novoTotalRecalc - capitalRestante;
+    const novoPmt = calcPMT(capitalRestante, r.juros||0, r.metodo||'simples', r.prestacoes||1);
+
+    analysisHtml = `<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:var(--dark4);border-radius:7px;padding:10px;border-left:3px solid var(--blue)">
+        <div style="font-size:9px;color:var(--text-dim);text-transform:uppercase">Pago agora</div>
+        <div style="font-size:13px;font-weight:700;color:var(--blue);font-family:'DM Mono',monospace">${fmt(val)} MZN</div>
+        <div style="font-size:10px;color:var(--text-dim)">${pct.toFixed(0)}% do total</div>
+      </div>
+      <div style="background:var(--dark4);border-radius:7px;padding:10px;border-left:3px solid var(--amber)">
+        <div style="font-size:9px;color:var(--text-dim);text-transform:uppercase">Saldo Restante</div>
+        <div style="font-size:13px;font-weight:700;color:var(--amber);font-family:'DM Mono',monospace">${fmt(saldoN)} MZN</div>
+        <div style="font-size:10px;color:var(--text-dim)">${juroMora>0?'incl. mora':'em dívida'}</div>
+      </div>
+      <div style="background:var(--dark4);border-radius:7px;padding:10px;border-left:3px solid ${val<juroTotal?'var(--red)':'var(--green)'}">
+        <div style="font-size:9px;color:var(--text-dim);text-transform:uppercase">${val>=juroTotal?'Abate Capital':'Cobre Juro?'}</div>
+        <div style="font-size:13px;font-weight:700;color:${val>=juroTotal?'var(--green)':'var(--red)'};font-family:'DM Mono',monospace">${val>=juroTotal?fmt(abateNoCapital)+' MZN':'NÃO'}</div>
+        <div style="font-size:10px;color:var(--text-dim)">${val>=juroTotal?'abatido no capital':'falta '+fmt(juroTotal-val)}</div>
+      </div>
+    </div>`;
+
+    if(val >= juroTotal && abateNoCapital > 0){
+      partialAlert.style.display='block';
+      document.getElementById('pay-partial-text').innerHTML =
+        `Após cobrir o juro de <b style="color:var(--amber)">${fmt(juroTotal)} MZN</b>, sobram <b style="color:var(--blue)">${fmt(abateNoCapital)} MZN</b> para abater no capital. ` +
+        `Capital novo: <b style="color:var(--gold)">${fmt(capitalRestante)} MZN</b> · Novo juro: <b style="color:var(--amber)">${fmt(novoJuroRecalc)} MZN</b> · Novo total: <b style="color:var(--text)">${fmt(novoTotalRecalc)} MZN</b>${r.prestacoes>1?' · Prestação: <b style="color:var(--blue)">'+fmt(novoPmt)+' MZN</b>':''}`;
+      document.getElementById('btn-juros-only').style.display='none';
+      document.getElementById('btn-abate-cap').style.display='inline-flex';
+    } else if(val < juroTotal) {
+      partialAlert.style.display='block';
+      document.getElementById('pay-partial-text').innerHTML =
+        `Atenção: <b style="color:var(--red)">${fmt(val)} MZN</b> não cobre o juro de <b style="color:var(--amber)">${fmt(juroTotal)} MZN</b>. O capital e juros continuam integralmente em aberto.`;
+      document.getElementById('btn-juros-only').style.display='none';
+      document.getElementById('btn-abate-cap').style.display='none';
+    } else {
+      partialAlert.style.display='none';
+    }
+  } else {
+    partialAlert.style.display='none';
+  }
+
+  document.getElementById('pay-analysis-body').innerHTML = analysisHtml;
+
+  const barCol=isLiq?'var(--green)':pct>60?'var(--blue)':pct>20?'var(--amber)':'var(--red)';
+  prev.style.display='flex';
+  prev.innerHTML=`
+    <div class="prev-item" style="flex:1"><div class="prev-lbl">Recuperação ${pct.toFixed(0)}%${isLiq?' ✅':''}</div>
+      <div style="background:var(--dark);height:8px;border-radius:99px;overflow:hidden;margin-top:6px">
+        <div style="height:100%;border-radius:99px;background:${barCol};width:${pct.toFixed(1)}%;transition:width .5s"></div>
+      </div>
+    </div>`;
+}
+
+// Aplicar pagamento: só juro → capital rola para próximo período
+function applyJurosOnly(){
+  if(PAY_IDX===null) return;
+  _payMode = 'juros_only';
+  document.getElementById('btn-juros-only').style.background='var(--amber)';
+  document.getElementById('btn-juros-only').textContent='✅ Modo: Juro pago, capital rola';
+  document.getElementById('btn-confirm-pay').textContent='✅ Confirmar (capital rola)';
+}
+
+// Aplicar pagamento: abate no capital e recalcula
+function applyAbateCap(){
+  if(PAY_IDX===null) return;
+  _payMode = 'abate_cap';
+  document.getElementById('btn-abate-cap').style.background='var(--blue)';
+  document.getElementById('btn-abate-cap').textContent='✅ Modo: Abater capital';
+  document.getElementById('btn-confirm-pay').textContent='✅ Confirmar (recalcular)';
+}
+
+function savePay(){
+  if(PAY_IDX===null) return;
+  const val=+document.getElementById('pay-val').value;
+  if(!val||val<=0){ toast('⚠','Valor inválido'); return; }
+  const r=DB.cred[PAY_IDX];
+  const aR=cAR(r);
+  const juroTotal = aR - (r.capital||0);
+  const juroMora = calcJurosMoraAtual(r);
+  const date=document.getElementById('pay-date').value || today();
+  const note=document.getElementById('pay-note').value.trim();
+
+  if(!r.historico) r.historico = [];
+  r.historico.push({data:date, valor:val, modo:_payMode, nota:note, mora:juroMora>0?juroMora:0});
+
+  if(_payMode === 'juros_only'){
+    r.pago = (r.pago||0) + val;
+    const novaVenc = new Date(date);
+    novaVenc.setDate(novaVenc.getDate()+30);
+    r.dVenc = novaVenc.toISOString().split('T')[0];
+    r.dpgto = '';
+    r.notas = (r.notas?r.notas+' | ':'')+`Juro ${fmt(val)} MZN pago em ${fD(date)} — capital ${fmt(r.capital)} MZN rolou para ${fD(r.dVenc)}`;
+    saveDB(); closePayModal(); renderCred(); renderDash();
+    toast('🔄',`Juro pago! Capital ${fmt(r.capital)} MZN renova até ${fD(r.dVenc)}`);
+    return;
+  }
+
+  if(_payMode === 'abate_cap'){
+    const abateNoCapital = val - juroTotal;
+    const capitalRestante = Math.max(0, r.capital - abateNoCapital);
+    r.pago = (r.pago||0) + val;
+    const capitalAnterior = r.capital;
+    r.capital = capitalRestante;
+    if(!r.capitalOriginal) r.capitalOriginal = capitalAnterior;
+    // Rebuild amortization with new capital
+    r.schedule = buildAmortizacao(capitalRestante, r.juros||0, r.metodo||'simples', r.prestacoes||1, date);
+    r.notas = (r.notas?r.notas+' | ':'')+`Pgto ${fmt(val)} MZN em ${fD(date)}: juro ${fmt(juroTotal)} + abate ${fmt(abateNoCapital)} → capital novo: ${fmt(capitalRestante)} MZN`;
+    if(capitalRestante <= 0){ r.status='✅ LIQUIDADO'; r.dpgto=date; }
+    else { r.dpgto=''; }
+    saveDB(); closePayModal(); renderCred(); renderDash();
+    toast(capitalRestante<=0?'✅':'📉', capitalRestante<=0?`${r.devedor} LIQUIDADO!`:`Capital reduzido para ${fmt(capitalRestante)} MZN · Novo total: ${fmt(calcTotal(capitalRestante,r.juros||0,r.metodo||'simples',r.prestacoes||1))} MZN`);
+    return;
+  }
+
+  // Modo normal
+  const saldoTotal = Math.max(0, aR - (r.pago||0)) + juroMora;
+  r.pago=(r.pago||0)+val;
+  if(date) r.dpgto=date;
+  if(note) r.notas=(r.notas?r.notas+' | ':'')+`Pgto ${fmt(val)} MZN em ${fD(date)}`+(note?' ('+note+')':'');
+  const isLiq=val>=saldoTotal;
+  if(isLiq) { r.status='✅ LIQUIDADO'; r.dpgto=date; }
+  saveDB(); closePayModal(); renderCred(); renderDash();
+  toast(isLiq?'✅':'💰', isLiq?`${r.devedor} LIQUIDADO!`:`Pagamento de ${fmt(val)} MZN registado`);
+}
+
+// ════════════════════════════════════════
+// RENDER CRÉDITO (Corre Holding card style)
+// ════════════════════════════════════════
+function renderCred(){
+  const q=(document.getElementById('sc')?.value||'').toLowerCase();
+  const fs=document.getElementById('fc')?.value||'';
+  let f=DB.cred.map((r,i)=>({...r,_i:i,_st:cSt(r),_aR:cAR(r),_da:cDA(r)}));
+  if(q) f=f.filter(r=>(r.devedor||'').toLowerCase().includes(q)||(r.notas||'').toLowerCase().includes(q));
+  if(fs==='ativo') f=f.filter(r=>!r._st.includes('LIQUIDADO'));
+  else if(fs==='pago') f=f.filter(r=>r._st.includes('LIQUIDADO'));
+  else if(fs==='vencido') f=f.filter(r=>r._st.includes('ATRASADO'));
+
+  // KPIs
+  const C=DB.cred.map(r=>({...r,_st:cSt(r),_aR:cAR(r),_da:cDA(r)}));
+  const capT=C.reduce((a,r)=>a+(r.capital||0),0), recT=C.reduce((a,r)=>a+r._aR,0);
+  const pagT=C.reduce((a,r)=>a+(r.pago||0),0), morT=C.reduce((a,r)=>a+calcJurosMoraAtual(r),0);
+  const salT=C.filter(r=>r._st!=='✅ LIQUIDADO').reduce((a,r)=>a+r._aR,0);
+  const atrN=C.filter(r=>r._st.includes('ATRASADO')).length, liqN=C.filter(r=>r._st==='✅ LIQUIDADO').length;
+  const rP=recT>0?pagT/recT*100:0;
+  document.getElementById('kpi-cred').innerHTML=
+    kpi('gold','💰','Capital',fmt(capT)+' MZN',DB.cred.length+' contratos')+
+    kpi('blue','📈','A Receber',fmt(recT)+' MZN','c/ juros')+
+    kpi('amber','⚡','Juros Acumulado',fmt(morT)+' MZN','juros acumulados')+
+    kpi('green','✅','Recebido',fmt(pagT)+' MZN','já cobrado')+
+    kpi('red','🔓','Saldo Aberto',fmt(salT)+' MZN','em dívida')+
+    kpi('purple','📊','Recuperação',fmt(rP,1)+'%',liqN+' liquidados');
+
+  // Due alerts strip
+  const urgentes=C.map((r,i)=>({...r,_dbI:i})).filter(r=>r._st.includes('ATRASADO')||r._st.includes('VENCE'));
+  const stripEl=document.getElementById('cred-due-strip');
+  if(urgentes.length){
+    stripEl.innerHTML=urgentes.map(r=>{
+      const da=r._da, dd=diff(r.dVenc), saldo=Math.max(0,r._aR-(r.pago||0));
+      const isAtr=r._st.includes('ATRASADO');
+      const cls=da>30?'urgent':isAtr?'urgent':'warning';
+      const dias=isAtr?da:dd;
+      return `<div class="due-strip ${cls}" style="margin-bottom:6px">
+        <div class="due-strip-ico">${isAtr?'🔴':'⏰'}</div>
+        <div class="due-strip-body">
+          <div class="due-strip-title">${r.devedor}</div>
+          <div class="due-strip-sub">${isAtr?`ATRASO ${da}d`:`VENCE EM ${dd}d`} · Saldo: ${fmt(saldo)} MZN · <a onclick="openPayModal(${r._dbI},'total')">Pagar agora →</a></div>
+        </div>
+        <div class="due-strip-days">${dias}<small>${isAtr?'dias atraso':'dias'}</small></div>
+      </div>`;
+    }).join('');
+  } else { stripEl.innerHTML=''; }
+
+  // Cards
+  const container=document.getElementById('cred-list');
+  if(!f.length){ container.innerHTML=`<div class="empty"><div class="empty-ico">🏦</div><p>Nenhum crédito registado.</p><small>Ajuste os filtros ou adicione um novo registo</small></div>`; return; }
+  container.innerHTML=`<div style="padding:20px">` + f.map(r=>{
+    const aR=r._aR, da=r._da, dd=diff(r.dVenc), pago=r.pago||0;
+    const juroMora=calcJurosMoraAtual(r);
+    const saldo=Math.max(0,aR-pago);
+    const saldoTotal=saldo+juroMora;
+    const pct=aR>0?Math.min(100,pago/aR*100):0;
+    const isLiq=r._st==='✅ LIQUIDADO';
+    const vencido=r._st.includes('ATRASADO');
+    const barCol=isLiq?'var(--green)':vencido?'var(--red)':pct>60?'var(--blue)':pct>20?'var(--amber)':'var(--red)';
+    const metodoLabel={'simples':'Flat','composto':'Composto','decrescente':'Price'}[r.metodo||'simples']||'Flat';
+    const prest=r.prestacoes||1;
+    const pmt=prest>1?calcPMT(r.capital||0,r.juros||0,r.metodo||'simples',prest):null;
+    const badge=isLiq?`<span class="badge badge-green">✅ Liquidado</span>`:
+      vencido&&da>30?`<span class="badge badge-red badge-red-pulse">⚡ +${da}d Atraso</span>`:
+      vencido?`<span class="badge badge-red badge-red-pulse">🔴 ${da}d Atraso</span>`:
+      dd<=7?`<span class="badge badge-amber badge-amber-pulse">⏰ ${dd}d</span>`:
+      `<span class="badge badge-gold">⏳ Activo</span>`;
+    const moraBadge=juroMora>0&&!isLiq?`<span class="badge badge-red" style="margin-left:6px">⚠ Juros Acumulado: +${fmt(juroMora)} MZN</span>`:'';
+    const noteHtml=r.notas?`<div class="caderno-mini" style="margin-top:6px">📓 ${r.notas.slice(0,60)}${r.notas.length>60?'…':''}</div>`:'';
+    return `
+      <div class="credit-card ${isLiq?'cc-paid':vencido?'cc-red':''}">
+        <div class="cc-head">
+          <div>
+            <div class="cc-name">${r.devedor}</div>
+            <div class="cc-contact">#${String(r.id).padStart(4,'0')} · ${fD(r.dEmprest)} · Capital: ${fmt(r.capital)} MZN · <span style="color:var(--teal)">${metodoLabel}</span></div>
+            ${noteHtml}
+          </div>
+          <div class="cc-amount">
+            ${badge}${moraBadge}
+            <div class="cc-amount-val">MZN ${fmt(isLiq?aR:saldoTotal)}</div>
+            ${juroMora>0&&!isLiq?`<div style="font-size:10px;color:var(--text-dim);text-align:right;margin-top:2px">incl. juros acumulado</div>`:''}
+          </div>
+        </div>
+        <div class="cc-bar-wrap">
+          <div class="cc-bar" style="width:${pct.toFixed(1)}%;background:${barCol}"></div>
+        </div>
+        <div class="cc-bar-info">
+          <span>Pago: MZN ${fmt(pago)}</span>
+          <span style="font-weight:700;color:${isLiq?'var(--green)':barCol}">${pct.toFixed(0)}%</span>
+          <span>Saldo: <strong style="color:${vencido?'var(--red)':'var(--text)'}">MZN ${fmt(isLiq?0:saldoTotal)}</strong></span>
+        </div>
+        <div class="cc-details">
+          <div class="cc-detail"><div class="lbl">Capital</div><div class="val" style="color:var(--gold)">MZN ${fmt(r.capital)}</div></div>
+          <div class="cc-detail"><div class="lbl">Juro ${((r.juros||0)*100).toFixed(0)}% (${metodoLabel})</div><div class="val" style="color:var(--amber)">MZN ${fmt(aR-r.capital)}</div></div>
+          ${juroMora>0&&!isLiq?`<div class="cc-detail"><div class="lbl">Juros Acumulado</div><div class="val" style="color:var(--red)">MZN ${fmt(juroMora)}</div></div>`:''}
+          ${pmt?`<div class="cc-detail"><div class="lbl">Prestação ×${prest}</div><div class="val" style="color:var(--blue)">MZN ${fmt(pmt)}</div></div>`:''}
+          <div class="cc-detail"><div class="lbl">Vencimento</div><div class="val" style="font-size:12px;color:${vencido?'var(--red)':dd<=7?'var(--amber)':'var(--text)'}">${fD(r.dVenc)}</div></div>
+          <div class="cc-detail"><div class="lbl">Empréstimo</div><div class="val" style="font-size:12px">${fD(r.dEmprest)}</div></div>
+          ${r.dpgto?`<div class="cc-detail"><div class="lbl">Pgto. Real</div><div class="val" style="font-size:12px;color:var(--green)">${fD(r.dpgto)}</div></div>`:''}
+        </div>
+        ${!isLiq?`
+        <div class="cc-actions">
+          <button class="btn btn-green btn-sm" onclick="openPayModal(${r._i},'total')">✅ Pago Total</button>
+          <button class="btn btn-blue btn-sm" onclick="openPayModal(${r._i},'parcial')">💳 Pgto. Parcial</button>
+          ${prest>1?`<button class="btn btn-amber btn-sm" onclick="showSchedule(${r._i})">📅 Amortização</button>`:''}
+          <button class="btn btn-ghost btn-sm" onclick="openCredModal(${r._i})">✏️ Editar</button>
+          <button class="btn btn-red btn-sm" onclick="openDelModal(()=>delCred(${r._i}))">🗑</button>
+        </div>`:`
+        <div class="cc-actions">
+          <button class="btn btn-ghost btn-sm" onclick="openCredModal(${r._i})">✏️ Editar</button>
+          <button class="btn btn-outline btn-sm" onclick="openDelModal(()=>delCred(${r._i}))">🗑 Remover</button>
+        </div>`}
+        ${r.historico&&r.historico.length?`
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-faint);margin-bottom:6px">Histórico de pagamentos</div>
+          ${r.historico.slice(-3).reverse().map(h=>`<div style="display:flex;justify-content:space-between;font-size:11px;padding:3px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text-dim)">${fD(h.data)}${h.nota?' · '+h.nota:''}</span><span style="font-family:'DM Mono',monospace;color:var(--green)">+${fmt(h.valor)} MZN</span></div>`).join('')}
+        </div>`:''}
+      </div>`;
+  }).join('')+'</div>';
+  document.getElementById('nb-cred').textContent=DB.cred.length;
+}
+function delCred(idx){ DB.cred.splice(idx,1); saveDB(); renderCred(); renderDash(); toast('🗑','Crédito eliminado'); }
+
+// ════════════════════════════════════════
+// AMORTIZATION SCHEDULE MODAL
+// ════════════════════════════════════════
+function showSchedule(idx){
+  const r = DB.cred[idx];
+  if(!r) return;
+  const sched = r.schedule || buildAmortizacao(r.capital||0, r.juros||0, r.metodo||'simples', r.prestacoes||1, r.dEmprest);
+  const metodoLabel = {'simples':'Juro Simples (Flat)','composto':'Juro Composto','decrescente':'Saldo Devedor (Price/Francês)'}[r.metodo||'simples'];
+  const totalJuro = sched.reduce((a,s)=>a+s.juro,0);
+  const totalAmort = sched.reduce((a,s)=>a+s.amort,0);
+  const totalPago = sched.reduce((a,s)=>a+s.prestacao,0);
+
+  const html = `
+    <div style="padding:18px">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
+        <div style="background:var(--dark4);border-radius:8px;padding:10px;text-align:center"><div style="font-size:9px;color:var(--text-dim);text-transform:uppercase;margin-bottom:4px">Capital</div><div style="font-family:'DM Mono',monospace;font-size:14px;font-weight:600;color:var(--gold)">${fmt(r.capital)} MZN</div></div>
+        <div style="background:var(--dark4);border-radius:8px;padding:10px;text-align:center"><div style="font-size:9px;color:var(--text-dim);text-transform:uppercase;margin-bottom:4px">Total Juros</div><div style="font-family:'DM Mono',monospace;font-size:14px;font-weight:600;color:var(--amber)">${fmt(totalJuro)} MZN</div></div>
+        <div style="background:var(--dark4);border-radius:8px;padding:10px;text-align:center"><div style="font-size:9px;color:var(--text-dim);text-transform:uppercase;margin-bottom:4px">Total Pago</div><div style="font-family:'DM Mono',monospace;font-size:14px;font-weight:600;color:var(--text)">${fmt(totalPago)} MZN</div></div>
+      </div>
+      <div style="font-size:10px;color:var(--text-dim);margin-bottom:10px">Método: <b style="color:var(--gold)">${metodoLabel}</b> · Taxa: <b>${((r.juros||0)*100).toFixed(0)}%</b>/mês · ${r.prestacoes||1} prestação(ões)</div>
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:12px">
+          <thead><tr style="background:var(--dark4)">
+            <th style="padding:8px 10px;text-align:center;color:var(--text-dim);font-size:10px;text-transform:uppercase">#</th>
+            <th style="padding:8px 10px;text-align:left;color:var(--text-dim);font-size:10px;text-transform:uppercase">Vencimento</th>
+            <th style="padding:8px 10px;text-align:right;color:var(--text-dim);font-size:10px;text-transform:uppercase">Prestação</th>
+            <th style="padding:8px 10px;text-align:right;color:var(--amber);font-size:10px;text-transform:uppercase">Juro</th>
+            <th style="padding:8px 10px;text-align:right;color:var(--gold);font-size:10px;text-transform:uppercase">Amortização</th>
+            <th style="padding:8px 10px;text-align:right;color:var(--text-dim);font-size:10px;text-transform:uppercase">Saldo</th>
+          </tr></thead>
+          <tbody>
+            ${sched.map((s,i)=>`<tr style="border-bottom:1px solid var(--border);${i%2===0?'background:rgba(255,255,255,0.01)':''}">
+              <td style="padding:7px 10px;text-align:center;font-family:'DM Mono',monospace;color:var(--text-faint)">${s.num}</td>
+              <td style="padding:7px 10px;font-family:'DM Mono',monospace;color:var(--text-dim)">${fD(s.data)}</td>
+              <td style="padding:7px 10px;text-align:right;font-family:'DM Mono',monospace;font-weight:600;color:var(--text)">${fmt(s.prestacao)} MZN</td>
+              <td style="padding:7px 10px;text-align:right;font-family:'DM Mono',monospace;color:var(--amber)">${fmt(s.juro)} MZN</td>
+              <td style="padding:7px 10px;text-align:right;font-family:'DM Mono',monospace;color:var(--gold)">${fmt(s.amort)} MZN</td>
+              <td style="padding:7px 10px;text-align:right;font-family:'DM Mono',monospace;color:${s.saldo>0?'var(--text-dim)':'var(--green)'}">${fmt(s.saldo)} MZN</td>
+            </tr>`).join('')}
+            <tr style="background:var(--dark4);font-weight:700">
+              <td colspan="2" style="padding:8px 10px;font-size:10px;color:var(--text-dim);text-transform:uppercase">TOTAIS</td>
+              <td style="padding:8px 10px;text-align:right;font-family:'DM Mono',monospace;color:var(--text)">${fmt(totalPago)} MZN</td>
+              <td style="padding:8px 10px;text-align:right;font-family:'DM Mono',monospace;color:var(--amber)">${fmt(totalJuro)} MZN</td>
+              <td style="padding:8px 10px;text-align:right;font-family:'DM Mono',monospace;color:var(--gold)">${fmt(totalAmort)} MZN</td>
+              <td style="padding:8px 10px;text-align:right;font-family:'DM Mono',monospace;color:var(--green)">0 MZN</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>`;
+
+  // Inject into drawer
+  document.getElementById('dr-title').textContent = `Amortização — ${r.devedor}`;
+  document.getElementById('dr-body').innerHTML = html;
+  document.getElementById('dov').classList.add('open');
+  document.getElementById('drawer').classList.add('open');
+}
+
+// ════════════════════════════════════════
+// IPTV MODAL
+// ════════════════════════════════════════
+let EI_iptv=null;
+const PS=30; let PG={iptv:1,nf:1}; let FT={iptv:[],nf:[]};
+function openIPTVModal(idx){
+  EI_iptv=idx!==undefined?idx:null;
+  const r=idx!==undefined?DB.iptv[idx]:null;
+  document.getElementById('iptv-modal-title').textContent=r?`Editar — ${r.cliente}`:'Nova Subscrição IPTV';
+  document.getElementById('if-cli').value=r?.cliente||'';
+  document.getElementById('if-id').value=r?.idServ||'';
+  document.getElementById('if-val').value=r?.valor||350;
+  document.getElementById('if-exp').value=r?.expira||'';
+  document.getElementById('if-vld').value=r?.valid||31;
+  document.getElementById('if-ren').value=r?.renovado||'Sim';
+  document.getElementById('if-not').value=r?.notas||'';
+  document.getElementById('ov-iptv').classList.add('open');
+  setTimeout(()=>document.getElementById('if-cli').focus(),80);
+}
+function closeIPTVModal(){ document.getElementById('ov-iptv').classList.remove('open'); EI_iptv=null; }
+function saveIPTV(){
+  const cli=document.getElementById('if-cli').value.trim(), exp=document.getElementById('if-exp').value;
+  if(!cli){toast('⚠','Nome obrigatório');return;} if(!exp){toast('⚠','Data de expiração obrigatória');return;}
+  const isN=EI_iptv===null;
+  const rec={id:isN?maxId(DB.iptv):DB.iptv[EI_iptv].id,cliente:cli,idServ:document.getElementById('if-id').value.trim(),valor:+document.getElementById('if-val').value||350,expira:exp,valid:+document.getElementById('if-vld').value||31,renovado:document.getElementById('if-ren').value,notas:document.getElementById('if-not').value.trim()};
+  isN?DB.iptv.push(rec):DB.iptv[EI_iptv]=rec;
+  saveDB(); closeIPTVModal(); applyI(); renderDash(); toast('✅',isN?`IPTV de ${cli} registado`:`${cli} actualizado`);
+}
+function applyI(){
+  const q=(document.getElementById('si')?.value||'').toLowerCase(), fs=document.getElementById('fi')?.value||'';
+  let f=DB.iptv.map((r,i)=>({...r,_i:i,_est:iEst(r),_dr:iDR(r)}));
+  if(q) f=f.filter(r=>(r.cliente||'').toLowerCase().includes(q)||(r.idServ||'').toLowerCase().includes(q));
+  if(fs==='ativo') f=f.filter(r=>r._est==='Ativo');
+  else if(fs==='vencido') f=f.filter(r=>r._est==='Vencido');
+  FT.iptv=f; PG.iptv=1; renderIT();
+}
+function renderIT(){
+  const f=FT.iptv;
+  const I=DB.iptv.map(r=>({...r,_est:iEst(r),_dr:iDR(r)}));
+  const iA=I.filter(r=>r._est==='Ativo').length, iV=I.length-iA;
+  const iRA=I.filter(r=>r._est==='Ativo').reduce((a,r)=>a+(r.valor||0),0);
+  const iRP=I.filter(r=>r._est==='Vencido').reduce((a,r)=>a+(r.valor||0),0);
+  document.getElementById('kpi-iptv').innerHTML=
+    kpi('','👥','Clientes',DB.iptv.length,'total')+
+    kpi('green','✅','Activos',iA,'com acesso')+
+    kpi('red','🔴','Vencidos',iV,'sem acesso')+
+    kpi('amber','⏰','A Vencer',I.filter(r=>r._dr>=0&&r._dr<=5).length,'próximos 5 dias')+
+    kpi('teal','📡','Receita Activa',fmt(iRA)+' MZN','mensal')+
+    kpi('amber','⏳','A Cobrar',fmt(iRP)+' MZN','recuperar');
+  const pg=f.slice((PG.iptv-1)*PS,PG.iptv*PS);
+  const tb=document.getElementById('tb-iptv');
+  if(!f.length){ tb.innerHTML=`<tr><td colspan="10"><div class="empty"><div class="empty-ico">📡</div><p>Sem registos</p></div></td></tr>`; return; }
+  tb.innerHTML=pg.map(r=>{
+    const dr=r._dr, est=r._est;
+    const rc=est==='Vencido'?'tr-red':dr<=5?'tr-amber':'';
+    const dc=dr<0?'var(--red)':dr<=5?'var(--amber)':'var(--green)';
+    const pct=Math.min(100,Math.max(0,dr/(r.valid||31)*100));
+    return `<tr class="${rc}">
+      <td class="mono" style="color:var(--text-faint)">${String(r.id).padStart(2,'0')}</td>
+      <td><div class="cc">${av(r.cliente)}<div><div class="cn">${r.cliente}</div><div class="ci">${r.idServ}</div></div></div></td>
+      <td class="mono" style="color:var(--teal)">${r.idServ}</td>
+      <td class="mono" style="font-weight:600;color:${dr<=7?'var(--amber)':'var(--text-dim)'}">${fD(r.expira)}</td>
+      <td>
+        <div class="exp-bar-wrap">
+          <div style="font-family:'DM Mono',monospace;font-size:16px;font-weight:700;color:${dc}">${dr}</div>
+          <div class="exp-bar-track"><div class="exp-bar-fill" style="width:${pct}%;background:${dc}"></div></div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-faint)">dias</div>
+        </div>
+      </td>
+      <td>${est==='Ativo'?`<span class="badge badge-green">ATIVO</span>`:`<span class="badge badge-red">VENCIDO</span>`}</td>
+      <td>${r.renovado==='Sim'?`<span class="badge badge-green">SIM</span>`:`<span class="badge badge-amber">NÃO</span>`}</td>
+      <td class="mono" style="color:var(--teal)">${fmt(r.valor)} MZN</td>
+      <td>${dr<0?`<span class="badge badge-red badge-red-pulse">EXPIRADO ${Math.abs(dr)}d</span>`:dr<=5?`<span class="badge badge-amber badge-amber-pulse">VENCE ${dr}d</span>`:`<span class="badge badge-green">OK ${dr}d</span>`}</td>
+      <td><div style="display:flex;gap:4px">
+        <button class="btn-icon" onclick="openIPTVModal(${r._i})"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>
+        <button class="btn-icon" style="color:var(--red)" onclick="openDelModal(()=>delIPTV(${r._i}))"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6"/></svg></button>
+      </div></td>
+    </tr>`;
+  }).join('');
+  const fA=f.filter(r=>r._est==='Ativo').length, fV=f.filter(r=>r._est==='Vencido').length;
+  const fRA=f.filter(r=>r._est==='Ativo').reduce((a,r)=>a+(r.valor||0),0);
+  document.getElementById('sum-iptv').innerHTML=`<span>Activos <strong style="color:var(--green)">${fA}</strong></span><span>Vencidos <strong style="color:var(--red)">${fV}</strong></span><span>Receita Activa <strong style="color:var(--green)">${fmt(fRA)} MZN</strong></span><div class="sumbar-sep"></div><span>Filtrado <strong>${f.length} / ${DB.iptv.length}</strong></span>`;
+  renderPgn('iptv',f.length);
+  document.getElementById('nb-iptv').textContent=DB.iptv.length;
+}
+function delIPTV(idx){ DB.iptv.splice(idx,1); saveDB(); applyI(); renderDash(); toast('🗑','IPTV eliminado'); }
+
+// ════════════════════════════════════════
+// NETFLIX MODAL
+// ════════════════════════════════════════
+let EI_nf=null;
+function openNFModal(idx){
+  EI_nf=idx!==undefined?idx:null;
+  const r=idx!==undefined?DB.nf[idx]:null;
+  document.getElementById('nf-modal-title').textContent=r?`Editar — ${r.cliente}`:'Nova Subscrição Netflix';
+  document.getElementById('nf-cli').value=r?.cliente||'';
+  document.getElementById('nf-cod').value=r?.cod||'';
+  document.getElementById('nf-val').value=r?.valor||200;
+  document.getElementById('nf-dp').value=r?.dpago||today();
+  document.getElementById('nf-vld').value=r?.valid||30;
+  document.getElementById('nf-est').value=r?.estado||'ACTIVO';
+  document.getElementById('nf-pln').value=r?.plano||'1 Tela';
+  document.getElementById('nf-pgt').value=r?.pgto||'PAGO';
+  document.getElementById('nf-not').value=r?.notas||'';
+  document.getElementById('ov-nf').classList.add('open');
+  setTimeout(()=>document.getElementById('nf-cli').focus(),80);
+}
+function closeNFModal(){ document.getElementById('ov-nf').classList.remove('open'); EI_nf=null; }
+function saveNF(){
+  const cli=document.getElementById('nf-cli').value.trim(), dp=document.getElementById('nf-dp').value;
+  if(!cli){toast('⚠','Nome obrigatório');return;} if(!dp){toast('⚠','Data de pagamento obrigatória');return;}
+  const vld=+document.getElementById('nf-vld').value||30;
+  const exp=new Date(new Date(dp).getTime()+vld*86400000).toISOString().slice(0,10);
+  const isN=EI_nf===null;
+  const rec={id:isN?maxId(DB.nf):DB.nf[EI_nf].id,cliente:cli,cod:document.getElementById('nf-cod').value.trim(),valor:+document.getElementById('nf-val').value||200,dpago:dp,valid:vld,expira:exp,estado:document.getElementById('nf-est').value,plano:document.getElementById('nf-pln').value,pgto:document.getElementById('nf-pgt').value,notas:document.getElementById('nf-not').value.trim()};
+  isN?DB.nf.push(rec):DB.nf[EI_nf]=rec;
+  saveDB(); closeNFModal(); applyN(); renderDash(); toast('✅',isN?`Netflix de ${cli} registado`:`${cli} actualizado`);
+}
+function applyN(){
+  const q=(document.getElementById('sn')?.value||'').toLowerCase();
+  const fs=document.getElementById('fn-st')?.value||'';
+  const fp=document.getElementById('fn-pg')?.value||'';
+  let f=DB.nf.map((r,i)=>({...r,_i:i,_dr:nDR(r)}));
+  if(q) f=f.filter(r=>(r.cliente||'').toLowerCase().includes(q)||(r.cod||'').toLowerCase().includes(q));
+  if(fs==='ok') f=f.filter(r=>r._dr>=0);
+  else if(fs==='exp') f=f.filter(r=>r._dr<0);
+  else if(fs==='vence') f=f.filter(r=>r._dr>=0&&r._dr<=7);
+  if(fp) f=f.filter(r=>r.pgto===fp);
+  FT.nf=f; PG.nf=1; renderNT();
+}
+function renderNT(){
+  const f=FT.nf;
+  const N=DB.nf.map(r=>({...r,_dr:nDR(r)}));
+  const nA=N.filter(r=>r._dr>=0).length, nE=N.filter(r=>r._dr<0).length;
+  const nRA=N.filter(r=>r.pgto==='PAGO').reduce((a,r)=>a+(r.valor||0),0);
+  const nRP=N.filter(r=>r.pgto==='PENDENTE').reduce((a,r)=>a+(r.valor||0),0);
+  document.getElementById('kpi-nf').innerHTML=
+    kpi('','🎬','Subscritores',DB.nf.length,'total')+
+    kpi('green','✅','Activos',nA,'com acesso')+
+    kpi('red','🔴','Expirados',nE,'sem acesso')+
+    kpi('amber','⏰','A Vencer',N.filter(r=>r._dr>=0&&r._dr<=7).length,'próximos 7 dias')+
+    kpi('red','💰','Receita Paga',fmt(nRA)+' MZN','confirmado')+
+    kpi('amber','⏳','Pendente',fmt(nRP)+' MZN','a cobrar');
+  const pg=f.slice((PG.nf-1)*PS,PG.nf*PS);
+  const tb=document.getElementById('tb-nf');
+  if(!f.length){ tb.innerHTML=`<tr><td colspan="12"><div class="empty"><div class="empty-ico">🎬</div><p>Sem registos</p></div></td></tr>`; return; }
+  tb.innerHTML=pg.map(r=>{
+    const dr=r._dr;
+    const rc=dr<0?'tr-red':dr<=7?'tr-amber':'';
+    const dc=dr<0?'var(--red)':dr<=7?'var(--amber)':'var(--green)';
+    const pct=Math.min(100,Math.max(0,dr/(r.valid||30)*100));
+    return `<tr class="${rc}">
+      <td class="mono" style="color:var(--text-faint)">${String(r.id).padStart(2,'0')}</td>
+      <td><div class="cc">${av(r.cliente)}<div><div class="cn">${r.cliente}</div><div class="ci">COD: ${r.cod}</div></div></div></td>
+      <td class="mono" style="color:var(--purple)">${r.cod}</td>
+      <td class="mono" style="color:var(--text-dim)">${fD(r.dpago)}</td>
+      <td class="mono" style="font-weight:600;color:${dr<=7?'var(--amber)':'var(--text-dim)'}">${fD(r.expira)}</td>
+      <td>
+        <div class="exp-bar-wrap">
+          <div style="font-family:'DM Mono',monospace;font-size:16px;font-weight:700;color:${dc}">${dr}</div>
+          <div class="exp-bar-track"><div class="exp-bar-fill" style="width:${pct}%;background:${dc}"></div></div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-faint)">dias</div>
+        </div>
+      </td>
+      <td>${r.estado==='ACTIVO'?`<span class="badge badge-green">ACTIVO</span>`:r.estado==='EXPIRADO'?`<span class="badge badge-red">EXPIRADO</span>`:`<span class="badge badge-purple">${r.estado}</span>`}</td>
+      <td class="mono" style="color:${r.valor>0?'var(--red)':'var(--text-faint)'}">${r.valor>0?fmt(r.valor)+' MZN':'—'}</td>
+      <td class="mono" style="color:var(--text-dim)">${r.plano}</td>
+      <td>${r.pgto==='PAGO'?`<span class="badge badge-green">PAGO</span>`:`<span class="badge badge-amber">PENDENTE</span>`}</td>
+      <td>${dr<0?`<span class="badge badge-red badge-red-pulse">EXPIRADO</span>`:dr<=2?`<span class="badge badge-red badge-red-pulse">HOJE/AMANHÃ</span>`:dr<=7?`<span class="badge badge-amber badge-amber-pulse">${dr}d</span>`:`<span class="badge badge-green">OK ${dr}d</span>`}</td>
+      <td><div style="display:flex;gap:4px">
+        <button class="btn-icon" onclick="openNFModal(${r._i})"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>
+        <button class="btn-icon" style="color:var(--red)" onclick="openDelModal(()=>delNF(${r._i}))"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6"/></svg></button>
+      </div></td>
+    </tr>`;
+  }).join('');
+  const fAc=f.filter(r=>r._dr>=0).length, fEx=f.filter(r=>r._dr<0).length;
+  const fRA=f.filter(r=>r.pgto==='PAGO').reduce((a,r)=>a+(r.valor||0),0);
+  document.getElementById('sum-nf').innerHTML=`<span>Activos <strong style="color:var(--green)">${fAc}</strong></span><span>Expirados <strong style="color:var(--red)">${fEx}</strong></span><span>Receita Paga <strong style="color:var(--green)">${fmt(fRA)} MZN</strong></span><div class="sumbar-sep"></div><span>Filtrado <strong>${f.length} / ${DB.nf.length}</strong></span>`;
+  renderPgn('nf',f.length);
+  document.getElementById('nb-nf').textContent=DB.nf.length;
+}
+function delNF(idx){ DB.nf.splice(idx,1); saveDB(); applyN(); renderDash(); toast('🗑','Netflix eliminado'); }
+
+// ════════════════════════════════════════
+// PAGINATION
+// ════════════════════════════════════════
+function renderPgn(m,total){
+  const pg=Math.ceil(total/PS)||1, cur=PG[m];
+  const s=(cur-1)*PS+1, e=Math.min(cur*PS,total);
+  const el=document.getElementById('pgn-'+m);
+  if(total<=PS){ el.innerHTML=`<span>${total} registos</span><div></div>`; return; }
+  let b=''; for(let i=1;i<=pg;i++) b+=`<button class="pgn-btn${i===cur?' on':''}" onclick="gPgn('${m}',${i})">${i}</button>`;
+  el.innerHTML=`<span>${s}–${e} de ${total} registos</span><div class="pgn-btns">${b}</div>`;
+}
+function gPgn(m,p){ PG[m]=p; m==='iptv'?renderIT():renderNT(); }
+
+// ════════════════════════════════════════
+// DELETE MODAL
+// ════════════════════════════════════════
+let pendingDel=null;
+function openDelModal(fn){ pendingDel=fn; document.getElementById('del-ov').classList.add('open'); }
+function closeDelModal(){ pendingDel=null; document.getElementById('del-ov').classList.remove('open'); }
+function confirmDel(){ if(pendingDel) pendingDel(); closeDelModal(); }
+
+// ════════════════════════════════════════
+// DRAWER
+// ════════════════════════════════════════
+function closeDrawer(){ document.getElementById('dov').classList.remove('open'); document.getElementById('drawer').classList.remove('open'); }
+
+// ════════════════════════════════════════
+// EXPORT CSV
+// ════════════════════════════════════════
+function exportCSV(mod){
+  const hs={cred:'ID;Devedor;Capital;A Receber;Juros%;Mora;Pago;Dt Emprést;Dt Venc;Status',iptv:'ID;Cliente;ID Serviço;Expiração;Validade;Renovado;Estado;Valor',nf:'ID;Cliente;Código;Dt Pagto;Validade;Expiração;Estado;Valor;Plano;Pagamento'};
+  const rs={
+    cred:DB.cred.map(r=>[r.id,r.devedor,r.capital,cAR(r),((r.juros||0)*100).toFixed(0)+'%',r.mora||0,r.pago||0,r.dEmprest,r.dVenc,cSt(r)].join(';')),
+    iptv:DB.iptv.map(r=>[r.id,r.cliente,r.idServ,r.expira,r.valid,r.renovado,iEst(r),r.valor].join(';')),
+    nf:DB.nf.map(r=>[r.id,r.cliente,r.cod,r.dpago,r.valid,r.expira,r.estado,r.valor,r.plano,r.pgto].join(';')),
+  };
+  const csv=[hs[mod],...rs[mod]].join('\n');
+  const a=document.createElement('a'); a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv); a.download=`MBC-${mod.toUpperCase()}-${today()}.csv`; a.click();
+  toast('📥','CSV exportado');
+}
+function exportAll(){ ['cred','iptv','nf'].forEach(m=>exportCSV(m)); }
+
+// ════════════════════════════════════════
+// KEYBOARD
+// ════════════════════════════════════════
+// RELATÓRIOS — LUCROS POR PERÍODO
+// ════════════════════════════════════════
+
+function relInitSelectors(){
+  const meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  const mesEl = document.getElementById('rel-mes');
+  const anoEl = document.getElementById('rel-ano');
+  if(!mesEl || mesEl.options.length > 0) return;
+  meses.forEach((m,i) => { const o=document.createElement('option'); o.value=i; o.textContent=m; mesEl.appendChild(o); });
+  const now = new Date();
+  mesEl.value = now.getMonth();
+  const curAno = now.getFullYear();
+  for(let y=curAno; y>=curAno-3; y--){ const o=document.createElement('option'); o.value=y; o.textContent=y; anoEl.appendChild(o); }
+  anoEl.value = curAno;
+  // default intervalo dates
+  const d = new Date(now.getFullYear(), now.getMonth(), 1);
+  document.getElementById('rel-de').value = d.toISOString().split('T')[0];
+  document.getElementById('rel-ate').value = today();
+}
+
+function relGetRange(){
+  const tipo = document.getElementById('rel-tipo')?.value || 'mes';
+  const mesWrap = document.getElementById('rel-mes-wrap');
+  const intWrap = document.getElementById('rel-intervalo-wrap');
+
+  if(tipo === 'mes'){
+    mesWrap.style.display='flex'; intWrap.style.display='none';
+    const m = +document.getElementById('rel-mes').value;
+    const y = +document.getElementById('rel-ano').value;
+    const de = new Date(y, m, 1);
+    const ate = new Date(y, m+1, 0);
+    return { de, ate, label: document.getElementById('rel-mes').options[m].text + ' ' + y };
+  }
+  if(tipo === 'intervalo'){
+    mesWrap.style.display='none'; intWrap.style.display='flex';
+    const de = new Date((document.getElementById('rel-de').value||today())+'T00:00:00');
+    const ate = new Date((document.getElementById('rel-ate').value||today())+'T23:59:59');
+    return { de, ate, label: fD(document.getElementById('rel-de').value)+' → '+fD(document.getElementById('rel-ate').value) };
+  }
+  if(tipo === 'ano'){
+    mesWrap.style.display='none'; intWrap.style.display='none';
+    const y = new Date().getFullYear();
+    return { de: new Date(y,0,1), ate: new Date(y,11,31), label: 'Ano '+y };
+  }
+}
+
+function inRange(dateStr, de, ate){
+  if(!dateStr) return false;
+  const d = new Date(dateStr+'T00:00:00');
+  return d >= de && d <= ate;
+}
+
+function renderRel(){
+  relInitSelectors();
+  const range = relGetRange();
+  if(!range) return;
+  document.getElementById('rel-sub-title').textContent = 'Período: ' + range.label;
+
+  // Collect all payments in range
+  const pgtos = [];
+  DB.cred.forEach((r,ri) => {
+    (r.historico||[]).forEach(h => {
+      if(!inRange(h.data, range.de, range.ate)) return;
+      const aR = cAR(r);
+      const cap = r.capital||0;
+      const juroContrat = aR - cap;
+      // estimate juro portion: proportional to what was paid
+      const totalPago = r.pago||0;
+      const propJuro = aR>0 ? Math.min(1, (h.valor/aR)) : 0;
+      const juroEstim = Math.min(h.valor, juroContrat * propJuro + (h.mora||0));
+      const capEstim  = Math.max(0, h.valor - juroEstim);
+      pgtos.push({
+        tipo:'credito', devedor:r.devedor, data:h.data,
+        total:h.valor, juro:juroEstim, capital:capEstim, mora:h.mora||0,
+        modo:h.modo||'normal', nota:h.nota||'', credIdx:ri
+      });
+    });
+  });
+
+  // IPTV subscriptions paid in range (use expira - valid as payment date proxy)
+  DB.iptv.forEach(r => {
+    const payDate = r.dpago || r.expira;
+    if(!inRange(payDate, range.de, range.ate)) return;
+    pgtos.push({
+      tipo:'iptv', devedor:r.cliente, data:payDate,
+      total:r.valor||0, juro:r.valor||0, capital:0, mora:0,
+      modo:'subscricao', nota:'IPTV · '+r.idServ
+    });
+  });
+
+  // Netflix paid in range
+  DB.nf.forEach(r => {
+    if(!inRange(r.dpago, range.de, range.ate)) return;
+    if(r.pgto !== 'PAGO') return;
+    pgtos.push({
+      tipo:'netflix', devedor:r.cliente, data:r.dpago,
+      total:r.valor||0, juro:r.valor||0, capital:0, mora:0,
+      modo:'subscricao', nota:'Netflix · Cód '+r.cod+' · '+r.plano
+    });
+  });
+
+  pgtos.sort((a,b)=>b.data.localeCompare(a.data));
+
+  // Totals
+  const totalRecebido  = pgtos.reduce((a,p)=>a+p.total,0);
+  const totalJuros     = pgtos.filter(p=>p.tipo==='credito').reduce((a,p)=>a+p.juro,0);
+  const totalMora      = pgtos.filter(p=>p.tipo==='credito').reduce((a,p)=>a+p.mora,0);
+  const totalIPTV      = pgtos.filter(p=>p.tipo==='iptv').reduce((a,p)=>a+p.total,0);
+  const totalNetflix   = pgtos.filter(p=>p.tipo==='netflix').reduce((a,p)=>a+p.total,0);
+  const totalSubscr    = totalIPTV + totalNetflix;
+  const lucroTotal     = totalJuros + totalMora + totalSubscr;
+
+  // Emitted credit in range
+  const emitidos = DB.cred.filter(r => inRange(r.dEmprest, range.de, range.ate));
+  const capitalEmitido = emitidos.reduce((a,r)=>a+(r.capital||0),0);
+  const lucroEsperado  = emitidos.reduce((a,r)=>a+(cAR(r)-(r.capital||0)),0);
+
+  // BANNER LUCRO
+  document.getElementById('rel-lucro-banner').innerHTML = `
+    <div style="background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(76,175,116,0.08));border:1.5px solid rgba(201,168,76,0.4);border-radius:14px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div>
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:6px;font-family:'DM Mono',monospace">💰 Lucro Líquido · ${range.label}</div>
+        <div style="font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:var(--gold);line-height:1">${fmt(lucroTotal)} <span style="font-size:18px">MZN</span></div>
+        <div style="font-size:12px;color:var(--text-dim);margin-top:6px">Juros cobrados + Mora + Subscrições recebidas no período</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+        <div style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:12px 16px;text-align:center">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:4px">Juros Crédito</div>
+          <div style="font-family:'DM Mono',monospace;font-size:16px;font-weight:700;color:var(--amber)">${fmt(totalJuros)} MZN</div>
+        </div>
+        <div style="background:rgba(224,85,85,0.08);border:1px solid rgba(224,85,85,0.2);border-radius:10px;padding:12px 16px;text-align:center">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:4px">Juros Acumulado</div>
+          <div style="font-family:'DM Mono',monospace;font-size:16px;font-weight:700;color:var(--red)">${fmt(totalMora)} MZN</div>
+        </div>
+        <div style="background:rgba(59,191,163,0.08);border:1px solid rgba(59,191,163,0.2);border-radius:10px;padding:12px 16px;text-align:center">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:4px">Subscrições</div>
+          <div style="font-family:'DM Mono',monospace;font-size:16px;font-weight:700;color:var(--teal)">${fmt(totalSubscr)} MZN</div>
+        </div>
+      </div>
+    </div>`;
+
+  // KPIs
+  document.getElementById('kpi-rel').innerHTML =
+    kpi('gold','💰','Total Recebido',      fmt(totalRecebido)+' MZN', pgtos.length+' transacções') +
+    kpi('amber','⚡','Juros Cobrados',      fmt(totalJuros)+' MZN',   pgtos.filter(p=>p.tipo==='credito').length+' pagamentos crédito') +
+    kpi('red','⚠','Juros Acumulado',         fmt(totalMora)+' MZN',    'juros acumulados') +
+    kpi('teal','📡','IPTV Recebido',        fmt(totalIPTV)+' MZN',    DB.iptv.filter(r=>inRange(r.dpago||r.expira,range.de,range.ate)).length+' clientes') +
+    kpi('purple','🎬','Netflix Recebido',   fmt(totalNetflix)+' MZN', DB.nf.filter(r=>inRange(r.dpago,range.de,range.ate)&&r.pgto==='PAGO').length+' subscritores') +
+    kpi('blue','📤','Capital Emitido',      fmt(capitalEmitido)+' MZN',emitidos.length+' contratos novos') +
+    kpi('green','📈','Lucro Esperado (Emitido)',fmt(lucroEsperado)+' MZN','dos créditos emitidos no período');
+
+  // JUROS LISTA — por devedor
+  const jurPorDev = {};
+  pgtos.filter(p=>p.tipo==='credito').forEach(p=>{
+    if(!jurPorDev[p.devedor]) jurPorDev[p.devedor]={juro:0,mora:0,pgtos:0};
+    jurPorDev[p.devedor].juro  += p.juro;
+    jurPorDev[p.devedor].mora  += p.mora;
+    jurPorDev[p.devedor].pgtos += 1;
+  });
+  const jRows = Object.entries(jurPorDev).sort((a,b)=>b[1].juro-a[1].juro);
+  document.getElementById('rel-juros-lista').innerHTML = jRows.length
+    ? jRows.map(([dev,v])=>`
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid var(--border)">
+        <div style="display:flex;align-items:center;gap:10px">${av(dev)}<div>
+          <div style="font-size:13px;font-weight:600;color:var(--text)">${dev}</div>
+          <div style="font-size:11px;color:var(--text-dim)">${v.pgtos} pagamento${v.pgtos!==1?'s':''}${v.mora>0?' · Mora: '+fmt(v.mora)+' MZN':''}</div>
+        </div></div>
+        <div style="text-align:right">
+          <div style="font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--amber)">${fmt(v.juro)} MZN</div>
+          <div style="font-size:10px;color:var(--text-dim)">juros cobrados</div>
+        </div>
+      </div>`).join('')
+    : '<div class="empty" style="padding:24px"><div class="empty-ico">🏦</div><p>Nenhum juro cobrado neste período</p></div>';
+
+  // SUBSCR LISTA
+  const subRows = [
+    ...(totalIPTV>0?[{ico:'📡',nome:'IPTV',clientes:DB.iptv.filter(r=>inRange(r.dpago||r.expira,range.de,range.ate)).length,val:totalIPTV,col:'teal'}]:[]),
+    ...(totalNetflix>0?[{ico:'🎬',nome:'Netflix',clientes:DB.nf.filter(r=>inRange(r.dpago,range.de,range.ate)&&r.pgto==='PAGO').length,val:totalNetflix,col:'purple'}]:[]),
+  ];
+  document.getElementById('rel-subscr-lista').innerHTML = subRows.length
+    ? subRows.map(s=>`
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border)">
+        <div style="font-size:22px">${s.ico}</div>
+        <div style="flex:1;margin-left:12px">
+          <div style="font-size:13px;font-weight:600;color:var(--text)">${s.nome}</div>
+          <div style="font-size:11px;color:var(--text-dim)">${s.clientes} cliente${s.clientes!==1?'s':''} no período</div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--${s.col})">${fmt(s.val)} MZN</div>
+      </div>`).join('')
+    : '<div class="empty" style="padding:24px"><div class="empty-ico">📡</div><p>Nenhuma subscrição no período</p></div>';
+
+  // TABELA PAGAMENTOS
+  document.getElementById('rel-pgto-count').textContent = pgtos.length + ' transacções';
+  const modoLabel = {'normal':'Pagamento','juros_only':'Juro (rola)','abate_cap':'Abate Cap.','subscricao':'Subscrição'};
+  const tipoIco   = {'credito':'🏦','iptv':'📡','netflix':'🎬'};
+  document.getElementById('tb-rel-pgtos').innerHTML = pgtos.length
+    ? pgtos.map((p,i)=>`
+      <tr>
+        <td class="mono" style="color:var(--text-faint)">${i+1}</td>
+        <td><div class="cc">${av(p.devedor)}<div><div class="cn">${p.devedor}</div></div></div></td>
+        <td><span class="badge ${p.tipo==='credito'?'badge-gold':p.tipo==='iptv'?'badge-teal':'badge-purple'}">${tipoIco[p.tipo]} ${p.tipo.charAt(0).toUpperCase()+p.tipo.slice(1)}</span></td>
+        <td class="mono" style="color:var(--text-dim)">${fD(p.data)}</td>
+        <td class="mono" style="color:var(--gold)">${p.capital>0?fmt(p.capital)+' MZN':'—'}</td>
+        <td class="mono" style="color:var(--amber);font-weight:600">${p.juro>0?fmt(p.juro)+' MZN':'—'}</td>
+        <td class="mono" style="color:${p.mora>0?'var(--red)':'var(--text-faint)'}">${p.mora>0?fmt(p.mora)+' MZN':'—'}</td>
+        <td class="mono" style="color:var(--green);font-weight:700">${fmt(p.total)} MZN</td>
+        <td><span class="badge ${p.modo==='normal'||p.modo==='subscricao'?'badge-green':p.modo==='juros_only'?'badge-amber':'badge-blue'}" style="font-size:9px">${modoLabel[p.modo]||p.modo}</span></td>
+        <td style="font-size:11px;color:var(--text-dim)">${p.nota||'—'}</td>
+      </tr>`)
+      .join('')
+    : '<tr><td colspan="10"><div class="empty" style="padding:24px"><div class="empty-ico">💳</div><p>Nenhuma transacção neste período</p></div></td></tr>';
+
+  const totCap = pgtos.reduce((a,p)=>a+p.capital,0);
+  const totJ   = pgtos.reduce((a,p)=>a+p.juro,0);
+  const totM   = pgtos.reduce((a,p)=>a+p.mora,0);
+  document.getElementById('sum-rel-pgtos').innerHTML=`
+    <span>Transacções <strong>${pgtos.length}</strong></span>
+    <span>Capital Recup. <strong style="color:var(--gold)">${fmt(totCap)} MZN</strong></span>
+    <span>Juros <strong style="color:var(--amber)">${fmt(totJ)} MZN</strong></span>
+    <span>Mora <strong style="color:var(--red)">${fmt(totM)} MZN</strong></span>
+    <div class="sumbar-sep"></div>
+    <span>Total Recebido <strong style="color:var(--green)">${fmt(totalRecebido)} MZN</strong></span>
+    <span>💰 Lucro <strong style="color:var(--gold)">${fmt(lucroTotal)} MZN</strong></span>`;
+
+  // TABELA EMITIDOS
+  document.getElementById('tb-rel-emitidos').innerHTML = emitidos.length
+    ? emitidos.map((r,i)=>{
+        const aR=cAR(r); const lucEsp=aR-(r.capital||0);
+        const st=cSt(r); const isLiq=st.includes('LIQUIDADO'); const venc=st.includes('ATRASADO');
+        const metLabel={'simples':'Flat','composto':'Comp.','decrescente':'Price'}[r.metodo||'simples']||'Flat';
+        return `<tr class="${venc?'tr-red':isLiq?'tr-dim':''}">
+          <td class="mono" style="color:var(--text-faint)">${i+1}</td>
+          <td><div class="cc">${av(r.devedor)}<div class="cn">${r.devedor}</div></div></td>
+          <td class="mono" style="color:var(--gold)">${fmt(r.capital)} MZN</td>
+          <td class="mono" style="color:var(--amber)">${((r.juros||0)*100).toFixed(0)}%</td>
+          <td><span class="badge badge-teal" style="font-size:9px">${metLabel}</span></td>
+          <td class="mono">${fmt(aR)} MZN</td>
+          <td class="mono" style="color:var(--green);font-weight:600">${fmt(lucEsp)} MZN</td>
+          <td class="mono" style="color:var(--text-dim)">${fD(r.dEmprest)}</td>
+          <td class="mono" style="color:${venc?'var(--red)':'var(--text-dim)'}">${fD(r.dVenc)}</td>
+          <td>${isLiq?'<span class="badge badge-green">✅ Liq.</span>':venc?'<span class="badge badge-red badge-red-pulse">🔴 Atraso</span>':'<span class="badge badge-gold">⏳ Activo</span>'}</td>
+        </tr>`;
+      }).join('')
+    : '<tr><td colspan="10"><div class="empty" style="padding:24px"><p>Nenhum crédito emitido neste período</p></div></td></tr>';
+
+  const totEmitCap = emitidos.reduce((a,r)=>a+(r.capital||0),0);
+  document.getElementById('sum-rel-emitidos').innerHTML=`
+    <span>Contratos Novos <strong>${emitidos.length}</strong></span>
+    <span>Capital Emitido <strong style="color:var(--gold)">${fmt(totEmitCap)} MZN</strong></span>
+    <div class="sumbar-sep"></div>
+    <span>Lucro Esperado <strong style="color:var(--green)">${fmt(lucroEsperado)} MZN</strong></span>`;
+
+  // TABELA SUBSCR DO PERÍODO
+  const iptvP = DB.iptv.filter(r=>inRange(r.dpago||r.expira,range.de,range.ate));
+  const nfP   = DB.nf.filter(r=>inRange(r.dpago,range.de,range.ate)&&r.pgto==='PAGO');
+  const allSub = [
+    ...iptvP.map(r=>({ico:'📡',cliente:r.cliente,servico:'IPTV · '+r.idServ,data:r.dpago||r.expira,valor:r.valor||0,estado:iEst(r)})),
+    ...nfP.map(r=>({ico:'🎬',cliente:r.cliente,servico:'Netflix · '+r.plano+' · Cód '+r.cod,data:r.dpago,valor:r.valor||0,estado:'ACTIVO'})),
+  ].sort((a,b)=>b.data.localeCompare(a.data));
+  document.getElementById('tb-rel-subscr').innerHTML = allSub.length
+    ? allSub.map((s,i)=>`
+      <tr>
+        <td class="mono" style="color:var(--text-faint)">${i+1}</td>
+        <td><div class="cc">${av(s.cliente)}<div class="cn">${s.cliente}</div></div></td>
+        <td style="font-size:12px;color:var(--text-dim)">${s.ico} ${s.servico}</td>
+        <td class="mono" style="color:var(--text-dim)">${fD(s.data)}</td>
+        <td class="mono" style="color:var(--teal);font-weight:600">${fmt(s.valor)} MZN</td>
+        <td><span class="badge badge-green">${s.estado}</span></td>
+      </tr>`)
+      .join('')
+    : '<tr><td colspan="6"><div class="empty" style="padding:24px"><p>Nenhuma subscrição com pagamento neste período</p></div></td></tr>';
+  const totSub = allSub.reduce((a,s)=>a+s.valor,0);
+  document.getElementById('sum-rel-subscr').innerHTML=`
+    <span>Total <strong>${allSub.length}</strong></span>
+    <div class="sumbar-sep"></div>
+    <span>Receita <strong style="color:var(--teal)">${fmt(totSub)} MZN</strong></span>`;
+}
+
+function exportRelCSV(){
+  relInitSelectors();
+  const range = relGetRange();
+  if(!range) return;
+  const pgtos = [];
+  DB.cred.forEach(r=>(r.historico||[]).forEach(h=>{
+    if(!inRange(h.data,range.de,range.ate)) return;
+    pgtos.push(['CREDITO',r.devedor,fD(h.data),h.valor,(h.mora||0),h.modo||'normal',h.nota||''].join(';'));
+  }));
+  DB.iptv.forEach(r=>{ if(!inRange(r.dpago||r.expira,range.de,range.ate)) return; pgtos.push(['IPTV',r.cliente,fD(r.dpago||r.expira),r.valor||0,0,'subscricao','IPTV '+r.idServ].join(';')); });
+  DB.nf.forEach(r=>{ if(!inRange(r.dpago,range.de,range.ate)||r.pgto!=='PAGO') return; pgtos.push(['NETFLIX',r.cliente,fD(r.dpago),r.valor||0,0,'subscricao','Netflix '+r.plano].join(';')); });
+  const csv = ['Período;'+range.label,'','=== PAGAMENTOS DO PERÍODO ===','Fonte;Cliente;Data;Valor Recebido;Mora;Modo;Notas',...pgtos].join('\n');
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
+  a.download='MBC-LUCROS-'+today()+'.csv';
+  a.click();
+  toast('📥','Relatório de lucros exportado');
+}
+
+function printRel(){
+  window.print();
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    closePayModal(); closeCredModal(); closeIPTVModal(); closeNFModal(); closeDelModal(); closeDrawer();
+  }
+});
+
+// ════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════
+loadDB();
+renderDash();
+applyI();
+applyN();
+icfSetToday();
+</script>
+
+<!-- FOOTER -->
+<footer style="margin-top:40px;padding:22px 24px;border-top:1px solid var(--border);background:var(--dark2);text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px">
+  <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-faint);letter-spacing:2px;text-transform:uppercase">MR-BYPASSER CORP · Financial Intelligence Platform</div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)"></span>
+    <span style="font-family:'Playfair Display',serif;font-size:13px;color:var(--gold-light);letter-spacing:.04em">Programado &amp; Desenvolvido por <strong>Elton Jackson</strong></span>
+    <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)"></span>
+  </div>
+  <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-faint);letter-spacing:1.5px">© 2025 · TODOS OS DIREITOS RESERVADOS</div>
+</footer>
+
+</body>
+</html>
